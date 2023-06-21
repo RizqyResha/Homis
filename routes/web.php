@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Client\Auth\ClientLoginController;
+use App\Http\Controllers\Client\ClientHomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin\login\login');
+Route::get('/', [ClientLoginController::class, 'getLogin'])->middleware('guest');
+Route::get('client/login', [ClientLoginController::class, 'getLogin'])->middleware('guest')->name('client.login');
+Route::post('client/login', [ClientLoginController::class, 'postLogin']);
+Route::get('client/logout', [ClientLoginController::class, 'logout'])->name('client.logout');
+Route::group(['prefix' => 'client', 'middleware' => ['auth:client']], function () {
+    Route::get('/home', [ClientHomeController::class, 'index'])->name('pelanggan.home.index');
 });

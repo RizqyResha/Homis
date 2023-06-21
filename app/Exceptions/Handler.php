@@ -27,4 +27,27 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Summary of unauthenticated
+     * @param mixed $request
+     * @param \Illuminate\Auth\AuthenticationException $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    protected function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+
+        $uri = $request->path();
+
+        if ($request->is('client*')) {
+            return redirect('client/login');
+        }
+        // elseif($request->is('/*')){
+        //   return redirect('/login');
+        // }
+
+    }
 }
