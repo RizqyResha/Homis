@@ -12,7 +12,7 @@
 <body class="w-full h-full bg-no-repeat bg-cover" style="background-image: url({{ asset('assets/img/client/login/bg.png') }})">
     <div class="grid lg:grid-cols-2 grid-rows-none">
         <div class="visible grid lg:grid-cols-3 lg:visible sm:invisible md:invisible xs:invisible ssm:invisible sxm:invisible xxm:invisible">
-            <div class="lg:col-span-2 lg:bg-no-repeat lg:h-screen lg:w-full bg-cover" style="background-image: url({{ asset('assets/img/client/login/all3.png') }})"></div>
+            <div class="xl:col-span-2 lg:col-span-3 lg:bg-no-repeat h-full w-full bg-cover" style="background-image: url({{ asset('assets/img/client/login/all3.png') }})"></div>
         </div>
         <div class="grid grid-cols-1">
             <div class="w-full lg:max-w-lg">
