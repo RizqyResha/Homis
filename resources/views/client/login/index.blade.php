@@ -23,11 +23,11 @@
                     </p>
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                         <a class="text-gray-500">Sign </a><a class="text-green-400">in</a>
-                        @if ($message = Session::get('Failed'))
+                    </h1>
+                    @if ($message = Session::get('Failed'))
                             <br>
                             <div class="text-sm text-red-600">*{{ $message }}</div>
-                        @endif
-                    </h1>
+                    @endif
                     <form class="space-y-4 md:space-y-6" action="/client/login" method="POST">
                         @csrf
                         <div>
@@ -93,4 +93,4 @@
     </div>
 </body>
 
-</html
+</html>

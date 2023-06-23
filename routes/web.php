@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Client\Auth\ClientLoginController;
+use App\Http\Controllers\Client\Auth\ClientRegisterController;
 use App\Http\Controllers\Client\ClientHomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/register', [ClientRegisterController::class, 'index'])->name('register');
 
 Route::get('/', [ClientLoginController::class, 'getLogin'])->middleware('guest');
 Route::get('client/login', [ClientLoginController::class, 'getLogin'])->middleware('guest')->name('client.login');
