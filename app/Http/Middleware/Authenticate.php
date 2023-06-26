@@ -17,7 +17,7 @@ class Authenticate extends Middleware
 
         if ($request->is('client*')) {
             if (Auth::guard('client')->check()) {
-                return redirect('client/');
+                return redirect('/');
             }
         }
     }

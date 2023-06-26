@@ -17,11 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/register', [ClientRegisterController::class, 'index'])->name('register');
+Route::post('/register-process', [ClientRegisterController::class, 'process'])->name('client.register.process');
 
-Route::get('/', [ClientLoginController::class, 'getLogin'])->middleware('guest');
-Route::get('client/login', [ClientLoginController::class, 'getLogin'])->middleware('guest')->name('client.login');
-Route::post('client/login', [ClientLoginController::class, 'postLogin']);
-Route::get('client/logout', [ClientLoginController::class, 'logout'])->name('client.logout');
-Route::group(['prefix' => 'client', 'middleware' => ['auth:client']], function () {
-    Route::get('/home', [ClientHomeController::class, 'index'])->name('pelanggan.home.index');
+Route::get('/', [ClientHomeController::class, 'index'])->middleware('guest')->name('home');
+Route::get('/login', [ClientLoginController::class, 'getLogin'])->middleware('guest')->name('client.login');
+Route::post('/login', [ClientLoginController::class, 'postLogin'])->name('client.login.process');
+Route::get('/logout', [ClientLoginController::class, 'logout'])->name('client.logout');
+Route::get('/home', [ClientHomeController::class, 'index'])->name('pelanggan.home.index');
+Route::group(['prefix' => '/', 'middleware' => ['auth:client']], function () {
+
 });

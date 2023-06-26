@@ -43,7 +43,7 @@ class Handler extends ExceptionHandler
         $uri = $request->path();
 
         if ($request->is('client*')) {
-            return redirect('client/login');
+            return redirect('/login');
         }
         // elseif($request->is('/*')){
         //   return redirect('/login');

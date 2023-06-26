@@ -12,7 +12,12 @@ class ClientLoginController extends Controller
 {
     public function getLogin()
     {
-        return view('client.login.index');
+        if (Auth::guard('client')->check()) {
+            return redirect()->route('home');
+        } else {
+            return view('client.login.index');
+        }
+
     }
 
     public function postLogin(Request $request)
@@ -26,7 +31,7 @@ class ClientLoginController extends Controller
 
         if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password])) {
             // Pindah ke halaman dashboard
-            return redirect()->intended('client/home');
+            return redirect()->intended('/home');
         } else {
             return redirect()->route('client.login')->with('Failed', 'Wrong password or Email');
         }
@@ -38,6 +43,6 @@ class ClientLoginController extends Controller
         if (Auth::guard('client')->check()) {
             Auth::guard('client')->logout();
         }
-        return redirect('/');
+        return redirect('/login');
     }
 }

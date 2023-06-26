@@ -4,6 +4,7 @@ module.exports = {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js",
     ],
     theme: {
         screens: {
@@ -15,7 +16,7 @@ module.exports = {
 
             md: "768px",
             // => @media (min-width: 768px) { ... }
-            
+
             lg: "1024px",
             // => @media (min-width: 1024px) { ... }
 
@@ -27,5 +28,5 @@ module.exports = {
         },
         extend: {},
     },
-    plugins: [],
+    plugins: [require("flowbite/plugin")],
 };

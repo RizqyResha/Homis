@@ -30,6 +30,7 @@ class ClientFactory extends Factory
             'identity_id' => Str::random(20),
             'first_name' => fake()->firstName,
             'last_name' => fake()->lastName,
+            'gender' => fake()->randomElement(['male', 'female']),
             'address' => fake()->address,
             'phone_no' => fake()->phoneNumber,
             'isActive' => '1',

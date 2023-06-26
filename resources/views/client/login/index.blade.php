@@ -9,15 +9,15 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="w-full h-full bg-no-repeat bg-cover" style="background-image: url({{ asset('assets/img/client/login/bg.png') }})">
+<body class="w-full h-screen bg-no-repeat bg-cover" style="background-image: url({{ asset('assets/img/client/login/bg.png') }})">
     <div class="grid lg:grid-cols-2 grid-rows-none">
         <div class="visible grid lg:grid-cols-3 lg:visible sm:invisible md:invisible xs:invisible ssm:invisible sxm:invisible xxm:invisible">
-            <div class="xl:col-span-2 lg:col-span-3 lg:bg-no-repeat h-full w-full bg-cover" style="background-image: url({{ asset('assets/img/client/login/all3.png') }})"></div>
+            <div class="xl:col-span-2 lg:col-span-3 lg:bg-no-repeat lg:h-screen w-full bg-cover" style="background-image: url({{ asset('assets/img/client/login/all3.png') }})"></div>
         </div>
         <div class="grid grid-cols-1">
             <div class="w-full lg:max-w-lg">
                 <div class="p-6 space-y-5 md:space-y-6 sm:p-8">
-                    <img src="{{ asset('assets/img/client/login/logo.png') }}" alt="" width="160px" srcset="">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="" width="160px" srcset="">
                     <p class="text-gray-500 text-bold">
                         Hello, welcome to our website, please fill in your account information to Log in
                     </p>
@@ -25,10 +25,10 @@
                         <a class="text-gray-500">Sign </a><a class="text-green-400">in</a>
                     </h1>
                     @if ($message = Session::get('Failed'))
-                            <br>
-                            <div class="text-sm text-red-600">*{{ $message }}</div>
+                        <br>
+                        <div class="text-sm text-red-600">*{{ $message }}</div>
                     @endif
-                    <form class="space-y-4 md:space-y-6" action="/client/login" method="POST">
+                    <form class="space-y-4 md:space-y-6" action="{{ route('client.login.process') }}" method="POST">
                         @csrf
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your
@@ -80,9 +80,9 @@
 
                     <p class="text-gray-500 text-center">Login with</p>
                     <div class="grid grid-cols-3 gap-4">
-                        <a href=""><button class="px-4 py-2 w-full bg-white border border-gray-300 flex justify-center"><img src="{{ asset('assets/img/client/login/google.png') }}" class="" alt="" width="30px" srcset=""></button></a>
-                        <a href=""><button class="px-4 py-2 w-full bg-white border border-gray-300 flex justify-center"><img src="{{ asset('assets/img/client/login/fb2.png') }}" class="" alt="" width="30px" srcset=""></button></a>
-                        <a href=""><button class="px-4 py-2 w-full bg-white border border-gray-300 flex justify-center"><img src="{{ asset('assets/img/client/login/twt2.png') }}" class="" alt="" width="30px" srcset=""></button></a>
+                        <a href=""><button class="px-4 py-2 w-full bg-white border border-gray-300 flex justify-center"><img src="{{ asset('assets/img/google.png') }}" class="" alt="" width="30px" srcset=""></button></a>
+                        <a href=""><button class="px-4 py-2 w-full bg-white border border-gray-300 flex justify-center"><img src="{{ asset('assets/img/fb2.png') }}" class="" alt="" width="30px" srcset=""></button></a>
+                        <a href=""><button class="px-4 py-2 w-full bg-white border border-gray-300 flex justify-center"><img src="{{ asset('assets/img/twt2.png') }}" class="" alt="" width="30px" srcset=""></button></a>
                     </div>
                     <p class="text-sm font-light text-gray-900 dark:text-gray-400">
                         Don’t have an account yet? <a href="#" class="font-medium text-green-600 hover:underline ">Sign up</a>

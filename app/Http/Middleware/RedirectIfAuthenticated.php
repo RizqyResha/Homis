@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
 
         if ($request->is('client*')) {
             if (Auth::guard('client')->check()) {
-                return redirect('client/home');
+                return redirect('/home');
             }
         }
 

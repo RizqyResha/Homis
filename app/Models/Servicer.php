@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Client extends Authenticatable
+class Servicer extends Authenticatable
 {
     use HasFactory;
-    protected $table = 'tbl_client';
-    protected $primaryKey = 'id_client';
+    protected $table = 'tbl_servicer';
+    protected $primaryKey = 'id_servicer';
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +17,7 @@ class Client extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id_client',
+        'id_servicer',
         'username',
         'email',
         'password',
