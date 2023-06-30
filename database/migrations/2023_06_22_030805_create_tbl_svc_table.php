@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -18,9 +17,7 @@ return new class extends Migration
             $table->integer('id_servicer')->index('id_servicer');
             $table->integer('id_svc_category')->index('id_svc_category');
             $table->text('thumbnail_image')->nullable();
-            $table->dateTime('created_at')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->char('daelete_status', 1)->nullable();
+            $table->string('description', 255);
         });
     }
 

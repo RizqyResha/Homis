@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('tbl_client', function (Blueprint $table) {
             $table->integer('id_client', true);
-            $table->string('username', 20)->nullable();
+            $table->string('username', 50)->nullable();
             $table->string('email', 50);
             $table->string('password', 100);
             $table->text('profile_image')->nullable();

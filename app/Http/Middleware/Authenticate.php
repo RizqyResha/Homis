@@ -19,6 +19,10 @@ class Authenticate extends Middleware
             if (Auth::guard('client')->check()) {
                 return redirect('/');
             }
+        } else if ($request->is('servicer*')) {
+            if (Auth::guard('servicer')->check()) {
+                return redirect('/servicer/dashboard');
+            }
         }
     }
 }

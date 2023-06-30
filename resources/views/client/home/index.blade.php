@@ -96,180 +96,68 @@
             <p class="text-3xl font-bold xl:text-start text-center text-gray-700">Featured Assistant</p>
             <div class="items-center grid xl:grid-cols-3 grid-cols-1 mt-10 gap-7">
                 {{-- item1 --}}
-                <div class="flex h-full justify-center">
-                    <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
-                        <div class="grid xl:grid-cols-3 xl:grid-cols-2">
-                            <div class="justify-center justify-self-center mx-auto">
-                                <img src="{{ asset('assets/img/client/home/person1.png') }}" alt="" class="mr-5">
-                            </div>
-                            <div class="xl:col-span-2 xl:pl-5 xl:mt-0 mt-5">
-                                <p class="font-bold">Prada Nagi</p>
-                                <p class="text-sm">Reliable, Skilled, Efficient, Responsible, Thorough, Professional, Sensitive to Detail, Effective, Friendly, Clean</p>
-                                <div class="flex items-center mt-1 mb-1">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>First star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Second star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Third star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Fourth star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Fifth star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4.95 out of 5</p>
+                @foreach ($featured_servicer as $row)
+                    <div class="flex h-full justify-center">
+                        <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
+                            <div class="grid xl:grid-cols-3 xl:grid-cols-2">
+                                <div class="justify-center justify-self-center mx-auto">
+                                    @if ($row->thumbnail_image == 'noimage')
+                                        <img src="{{ asset('assets/img/services/noimage.png') }}" width="120px" height="102px" alt="" class="mr-5">
+                                    @else
+                                        <img src="{{ asset('assets/img/services/' . $row->thumbnail_image) }}" width="120px" height="102px" alt="" class="mr-5">
+                                    @endif
                                 </div>
-                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">1,745 Reviewers</p>
-                            </div>
-                        </div>
-                        <hr class="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700">
-                        <p class="font-bold text-gray-500 mb-2">Servicer Pricing</p>
-                        <div class="grid grid-cols-2">
-                            <div class="grid grid-rows-4">
-                                <p class="text-gray-500">Hourly</p>
-                                <p class="text-gray-500">Daily</p>
-                                <p class="text-gray-500">Weekly</p>
-                                <p class="text-gray-500">Monthly</p>
-                            </div>
-                            <div class="grid grid-rows-4">
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                            </div>
-                        </div>
-                        <hr class="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700">
-                        <p class="font-bold text-gray-500 mb-2">Servicer Description</p>
-                        <p class=" text-gray-500">I have supplies and resources available to help you with the moving process, including moving in, moving out, and resetting.</p>
-                    </div>
-                </div>
-                {{-- End-item1 --}}
-
-                {{-- item1 --}}
-                <div class="flex h-full justify-center">
-                    <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
-                        <div class="grid xl:grid-cols-3 xl:grid-cols-2">
-                            <div class="justify-center justify-self-center mx-auto">
-                                <img src="{{ asset('assets/img/client/home/person1.png') }}" alt="" class="mr-5">
-                            </div>
-                            <div class="xl:col-span-2 xl:pl-5 xl:mt-0 mt-5">
-                                <p class="font-bold">Prada Nagi</p>
-                                <p class="text-sm">Reliable, Skilled, Efficient, Responsible, Thorough, Professional, Sensitive to Detail, Effective, Friendly, Clean</p>
-                                <div class="flex items-center mt-1 mb-1">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>First star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Second star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Third star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Fourth star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Fifth star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4.95 out of 5</p>
+                                <div class="xl:col-span-2 xl:pl-5 xl:mt-0 mt-5">
+                                    <p class="font-bold mb-1">{{ $row->svc_name }}</p>
+                                    <p class="text-sm mb-1">{{ $row->servicer_name }}</p>
+                                    <div class="flex items-center mt-1 mb-1">
+                                        <svg aria-hidden="true" class="w-5 h-5 {{ $row->rate_point >= 1 ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-500' }}  " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <title>First star</title>
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                        </svg>
+                                        <svg aria-hidden="true" class="w-5 h-5 {{ $row->rate_point >= 2 ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-500' }}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <title>Second star</title>
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                        </svg>
+                                        <svg aria-hidden="true" class="w-5 h-5 {{ $row->rate_point >= 3 ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-500' }}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <title>Third star</title>
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                        </svg>
+                                        <svg aria-hidden="true" class="w-5 h-5 {{ $row->rate_point >= 4 ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-500' }}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <title>Fourth star</title>
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                        </svg>
+                                        <svg aria-hidden="true" class="w-5 h-5 {{ $row->rate_point >= 5 ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-500' }}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <title>Fifth star</title>
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                        </svg>
+                                        <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white">{{ number_format($row->rate_point, 2) }} out of 5</p>
+                                    </div>
+                                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ $row->total_reviewers }} Reviewers</p>
                                 </div>
-                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">1,745 Reviewers</p>
                             </div>
-                        </div>
-                        <hr class="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700">
-                        <p class="font-bold text-gray-500 mb-2">Servicer Pricing</p>
-                        <div class="grid grid-cols-2">
-                            <div class="grid grid-rows-4">
-                                <p class="text-gray-500">Hourly</p>
-                                <p class="text-gray-500">Daily</p>
-                                <p class="text-gray-500">Weekly</p>
-                                <p class="text-gray-500">Monthly</p>
-                            </div>
-                            <div class="grid grid-rows-4">
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                            </div>
-                        </div>
-                        <hr class="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700">
-                        <p class="font-bold text-gray-500 mb-2">Servicer Description</p>
-                        <p class=" text-gray-500">I have suppli.</p>
-                    </div>
-                </div>
-                {{-- End-item1 --}}
-
-                {{-- item1 --}}
-                <div class="flex h-full justify-center">
-                    <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
-                        <div class="grid xl:grid-cols-3 xl:grid-cols-2">
-                            <div class="justify-center justify-self-center mx-auto">
-                                <img src="{{ asset('assets/img/client/home/person1.png') }}" alt="" class="mr-5">
-                            </div>
-                            <div class="xl:col-span-2 xl:pl-5 xl:mt-0 mt-5">
-                                <p class="font-bold">Prada Nagi</p>
-                                <p class="text-sm">Reliable, Skilled, Efficient, Responsible, Thorough, Professional, Sensitive to Detail, Effective, Friendly, Clean</p>
-                                <div class="flex items-center mt-1 mb-1">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>First star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Second star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Third star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Fourth star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <title>Fifth star</title>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                    <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4.95 out of 5</p>
+                            <hr class="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700">
+                            <p class="font-bold text-gray-500 mb-2">Servicer Pricing</p>
+                            <div class="grid grid-cols-2">
+                                <div class="grid grid-rows-4">
+                                    <p class="text-gray-500">Hourly</p>
+                                    <p class="text-gray-500">Daily</p>
+                                    <p class="text-gray-500">Weekly</p>
+                                    <p class="text-gray-500">Monthly</p>
                                 </div>
-                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">1,745 Reviewers</p>
+                                <div class="grid grid-rows-4">
+                                    <p class="text-gray-500 text-right font-bold">Rp. {{ number_format($row->hourly_price, 0, ',', '.') }}</p>
+                                    <p class="text-gray-500 text-right font-bold">Rp. {{ number_format($row->daily_price, 0, ',', '.') }}</p>
+                                    <p class="text-gray-500 text-right font-bold">Rp. {{ number_format($row->weekly_price, 0, ',', '.') }}</p>
+                                    <p class="text-gray-500 text-right font-bold">Rp. {{ number_format($row->monthly_price, 0, ',', '.') }}</p>
+                                </div>
                             </div>
+                            <hr class="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700">
+                            <p class="font-bold text-gray-500 mb-2">Servicer Description</p>
+                            <p class=" text-gray-500">{{ $row->description }}</p>
                         </div>
-                        <hr class="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700">
-                        <p class="font-bold text-gray-500 mb-2">Servicer Pricing</p>
-                        <div class="grid grid-cols-2">
-                            <div class="grid grid-rows-4">
-                                <p class="text-gray-500">Hourly</p>
-                                <p class="text-gray-500">Daily</p>
-                                <p class="text-gray-500">Weekly</p>
-                                <p class="text-gray-500">Monthly</p>
-                            </div>
-                            <div class="grid grid-rows-4">
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                                <p class="text-gray-500 text-right font-bold">Rp. 50.000</p>
-                            </div>
-                        </div>
-                        <hr class="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700">
-                        <p class="font-bold text-gray-500 mb-2">Servicer Description</p>
-                        <p class=" text-gray-500">I have suppli.</p>
                     </div>
-                </div>
+                @endforeach
                 {{-- End-item1 --}}
             </div>
         </div>

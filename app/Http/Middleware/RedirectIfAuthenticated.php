@@ -22,6 +22,10 @@ class RedirectIfAuthenticated
             if (Auth::guard('client')->check()) {
                 return redirect('/home');
             }
+        } else if ($request->is('servicer*')) {
+            if (Auth::guard('servicer')->check()) {
+                return redirect('/servicer/dashboard');
+            }
         }
 
         return $next($request);

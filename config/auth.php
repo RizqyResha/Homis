@@ -51,6 +51,17 @@ return [
             'provider' => 'client',
         ],
         //end-client
+
+        //client
+        'servicer' => [
+            'driver' => 'session',
+            'provider' => 'servicer'
+        ],
+        'servicer-api' => [
+            'driver' => 'token',
+            'provider' => 'servicer',
+        ],
+        //end-client
     ],
 
     /*
@@ -79,6 +90,11 @@ return [
         'client' => [
             'driver' => 'eloquent',
             'model' => App\Models\Client::class,
+        ],
+
+        'servicer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Servicer::class,
         ],
     ],
 

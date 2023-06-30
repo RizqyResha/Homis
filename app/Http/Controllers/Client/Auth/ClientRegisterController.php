@@ -4,13 +4,19 @@ namespace App\Http\Controllers\Client\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use Auth;
 use Illuminate\Http\Request;
 
 class ClientRegisterController extends Controller
 {
     public function index()
     {
-        return view('client.register.index');
+        if (Auth::guard('servicer')->check()) {
+            return redirect()->route('home');
+        } else {
+            return view('client.register.index');
+        }
+
     }
 
     public function process(Request $request)
@@ -30,7 +36,10 @@ class ClientRegisterController extends Controller
             'last_name' => $request->last_name,
             'gender' => $request->gender,
             'email' => $request->email,
+            'username' => $request->username,
             'password' => bcrypt($request->password),
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         return redirect()->route('client.login')->with('regis', 'Berhasil Daftar, Silahkan login');
     }

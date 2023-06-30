@@ -44,6 +44,8 @@ class Handler extends ExceptionHandler
 
         if ($request->is('client*')) {
             return redirect('/login');
+        } elseif ($request->is('servicer*')) {
+            return redirect('/servicer/login');
         }
         // elseif($request->is('/*')){
         //   return redirect('/login');

@@ -31,7 +31,7 @@ class ClientLoginController extends Controller
 
         if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password])) {
             // Pindah ke halaman dashboard
-            return redirect()->intended('/home');
+            return redirect()->intended('/');
         } else {
             return redirect()->route('client.login')->with('Failed', 'Wrong password or Email');
         }

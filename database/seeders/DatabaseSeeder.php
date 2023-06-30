@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(IdentitySeeder::class);
         $this->call(ClientSeeder::class);
+        $this->call(ServicerSeeder::class);
         $this->call(SvcCategorySeeder::class);
+        $this->call(SvcSeeder::class);
+        $this->call(SvcPriceSeeder::class);
+        $this->call(FeedbackSeeder::class);
     }
 }

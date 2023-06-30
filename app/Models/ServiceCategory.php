@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceCategory extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table = 'tbl_svc_category';
     protected $primarykey = 'id_svc_category';
     protected $fillable = [
