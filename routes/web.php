@@ -5,6 +5,9 @@ use App\Http\Controllers\Client\Auth\ClientRegisterController;
 use App\Http\Controllers\Client\ClientHomeController;
 use App\Http\Controllers\Servicer\Auth\ServicerLoginController;
 use App\Http\Controllers\Servicer\Auth\ServicerRegisterController;
+use App\Http\Controllers\Servicer\ServicerDashboardController;
+use App\Http\Controllers\Servicer\ServicerFeedbackController;
+use App\Http\Controllers\Servicer\ServicerServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,8 +45,9 @@ Route::get('/servicer/login', [ServicerLoginController::class, 'getLogin'])->mid
 Route::post('/servicer//login', [ServicerLoginController::class, 'postLogin'])->name('servicer.login.process');
 Route::get('/servicer/logout', [ServicerLoginController::class, 'logout'])->name('servicer.logout');
 Route::group(['prefix' => '/servicer', 'middleware' => ['auth:servicer']], function () {
-    Route::get('/dashboard', function () {
-        return view('servicer.dashboard.index');
-    })->name('servicer.dashboard');
+    Route::get('/dashboard', [ServicerDashboardController::class, 'index'])->name('servicer.dashboard');
+    Route::get('/feedback', [ServicerDashboardController::class, 'getFeedback']);
+    Route::get('/services', [ServicerServiceController::class, 'index'])->name('servicer.service');
+    Route::get('/services-create', [ServicerServiceController::class, 'getCreate'])->name('servicer.service.create');
 });
 //

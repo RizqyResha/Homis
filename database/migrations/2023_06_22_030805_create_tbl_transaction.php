@@ -12,24 +12,23 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('tbl_feedback', function (Blueprint $table) {
-            $table->integer('id_feedback', true);
+        Schema::create('tbl_transaction', function (Blueprint $table) {
+            $table->integer('id_transaction', true);
             $table->integer('id_svc')->index('id_svc');
             $table->integer('id_client')->index('id_client');
-            $table->text('description')->nullable();
-            $table->integer('rate_point')->nullable();
-            $table->integer('like_count')->nullable();
-            $table->dateTime('created_at')->nullable();
+            $table->dateTime('transaction_date');
+            $table->string('status');
+            $table->integer('price_total');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Run the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_feedback');
+        Schema::dropIfExists('tbl_transaction');
     }
 };

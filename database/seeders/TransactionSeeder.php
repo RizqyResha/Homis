@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Feedback;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Transaction;
 
-class FeedbackSeeder extends Seeder
+class TransactionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Feedback::factory()->count(2000)->create();
+        Transaction::factory()->count(2000)->create();
     }
 }

@@ -15,6 +15,7 @@ class Feedback extends Model
         'id_svc',
         'description',
         'rate_point',
+        'like_count',
         'created_at'
     ];
 }

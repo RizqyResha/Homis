@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SvcCategorySeeder::class);
         $this->call(SvcSeeder::class);
         $this->call(SvcPriceSeeder::class);
+        $this->call(TransactionSeeder::class);
         $this->call(FeedbackSeeder::class);
     }
 }

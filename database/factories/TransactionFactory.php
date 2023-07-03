@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Service;
-use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Client;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Feedback>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Transaction>
  */
-class FeedbackFactory extends Factory
+class TransactionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,10 +21,9 @@ class FeedbackFactory extends Factory
         return [
             'id_svc' => rand(1, Service::count()),
             'id_client' => rand(1, Client::count()),
-            'description' => fake()->text(),
-            'rate_point' => rand(1, 5),
-            'like_count' => rand(1, 2000),
-            'created_at' => fake()->dateTime()
+            'transaction_date' => fake()->dateTime(),
+            'price_total' => rand(10000, 1000000),
+            'status' => 'Paid'
         ];
     }
 }

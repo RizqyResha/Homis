@@ -31,6 +31,8 @@
                                     <div class="flex-shrink-0">
                                         @if (\Auth::guard('client')->user()->profile_image == 'noimage' || \Auth::guard('client')->user()->profile_image == null)
                                             <img class="w-5 h-5 rounded-full" src="{{ asset('assets/img/blank-profile.webp') }}" alt="Neil image">
+                                        @else
+                                            <img class="w-5 h-5 rounded-full" src="{{ asset('assets/img/client/profile-img/' . \Auth::guard('client')->user()->profile_image) }}" alt="Neil image">
                                         @endif
                                     </div>
                                     <div class="flex-1 min-w-0">
