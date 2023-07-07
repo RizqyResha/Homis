@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('tbl_svc_category', function (Blueprint $table) {
             $table->integer('id_svc_category', true);
             $table->text('svc_thumbnail')->nullable();
-            $table->string('svc_name', 50);
+            $table->string('svc_category_name', 50);
             $table->text('svc_description')->nullable();
         });
     }

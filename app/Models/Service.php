@@ -15,7 +15,9 @@ class Service extends Model
     protected $fillable = [
         'id_servicer',
         'id_svc_category',
-        'thumbnail_image'
-
+        'svc_name',
+        'thumbnail_image',
+        'description',
+        'delete_status'
     ];
 }

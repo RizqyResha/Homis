@@ -76,7 +76,7 @@ class ServicerDashboardController extends Controller
         }
 
         //Get-FeedBack
-        $feedback = Feedback::select('tbl_feedback.description', 'tbl_feedback.rate_point', 'tbl_feedback.like_count', 'tbl_feedback.created_at', 'tbl_client.username', 'tbl_client.profile_image', 'tbl_svc_category.svc_name')
+        $feedback = Feedback::select('tbl_feedback.description', 'tbl_feedback.rate_point', 'tbl_feedback.like_count', 'tbl_feedback.created_at', 'tbl_client.username', 'tbl_client.profile_image', 'tbl_svc_category.svc_category_name')
             ->join('tbl_svc', 'tbl_svc.id_svc', '=', 'tbl_feedback.id_svc')
             ->join('tbl_client', 'tbl_client.id_client', '=', 'tbl_feedback.id_client')
             ->join('tbl_servicer', 'tbl_servicer.id_servicer', '=', 'tbl_svc.id_servicer')
@@ -88,7 +88,10 @@ class ServicerDashboardController extends Controller
 
         // get Servicer
 
-        $services = Service::select("tbl_svc_category.svc_name")->join('tbl_svc_category', 'tbl_svc_category.id_svc_category', '=', 'tbl_svc.id_svc_category')->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)->get();
+        $services = Service::select("tbl_svc_category.svc_category_name")
+            ->join('tbl_svc_category', 'tbl_svc_category.id_svc_category', '=', 'tbl_svc.id_svc_category')
+            ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+            ->where('tbl_svc.delete_status', 0)->get();
 
 
         // return dd($services);
@@ -110,7 +113,7 @@ class ServicerDashboardController extends Controller
     {
         // Retrieve the paginated feedback data using your desired logic
         //Get-FeedBack
-        $feedback = Feedback::select('tbl_feedback.description', 'tbl_feedback.rate_point', 'tbl_feedback.like_count', 'tbl_feedback.created_at', 'tbl_client.username', 'tbl_client.profile_image', 'tbl_svc_category.svc_name')
+        $feedback = Feedback::select('tbl_feedback.description', 'tbl_feedback.rate_point', 'tbl_feedback.like_count', 'tbl_feedback.created_at', 'tbl_client.username', 'tbl_client.profile_image', 'tbl_svc_category.svc_category_name')
             ->join('tbl_svc', 'tbl_svc.id_svc', '=', 'tbl_feedback.id_svc')
             ->join('tbl_client', 'tbl_client.id_client', '=', 'tbl_feedback.id_client')
             ->join('tbl_servicer', 'tbl_servicer.id_servicer', '=', 'tbl_svc.id_servicer')

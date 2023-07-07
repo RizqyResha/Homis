@@ -23,6 +23,8 @@ class TransactionFactory extends Factory
             'id_client' => rand(1, Client::count()),
             'transaction_date' => fake()->dateTime(),
             'price_total' => rand(10000, 1000000),
+            'period_type' => fake()->randomElement(['Hourly', 'Daily', 'Weekly', 'Monthly']),
+            'confirm_point' => 0,
             'status' => 'Paid'
         ];
     }

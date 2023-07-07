@@ -240,7 +240,7 @@
 
                                     <div class="dark:text-white">
                                         <div class="Font Bold">{{ $row->username }}</div>
-                                        <div class="text-sm text-gray-500 dark:text-gray-400">{{ $row->svc_name }}</div>
+                                        <div class="text-sm text-gray-500 dark:text-gray-400">{{ $row->svc_category_name }}</div>
                                     </div>
                                 </div>
 
@@ -284,7 +284,7 @@
                                         <i class="text-white fa-solid fa-person-chalkboard relative top-0.75 text-xxs"></i>
                                     </div>
                                     <div class="flex flex-col">
-                                        <h6 class="mb-1 text-sm leading-normal text-slate-700 dark:text-white">{{ $row->svc_name }}</h6>
+                                        <h6 class="mb-1 text-sm leading-normal text-slate-700 dark:text-white">{{ $row->svc_category_name }}</h6>
                                     </div>
                                 </div>
                                 <div class="flex">

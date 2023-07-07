@@ -5,10 +5,10 @@
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent grid grid-cols-2">
                     <div>
-                        <h6 class="dark:text-white">Your Services</h6>
+                        <h6 class="dark:text-white font-bold text-gray-600 text-2xl">Your Services</h6>
                     </div>
                     <div class="flex justify-end px-10">
-                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-10 rounded mb-6 openModal" id="">ADD</button>
+                        <a href="{{ route('servicer.service.create') }}"><button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-10 rounded mb-6 openModal" id="">ADD</button></a>
                     </div>
                 </div>
 
@@ -26,7 +26,7 @@
                                             @endif
                                         </div>
                                         <div class="xl:pl-5 xl:mt-0 mt-5">
-                                            <p class="font-bold mb-1">{{ $row->svc_name }}</p>
+                                            <p class="font-bold mb-1">{{ $row->svc_category_name }}</p>
                                             <p class="text-sm mb-1">{{ $row->servicer_name }}</p>
                                             <div class="flex items-center mt-1 mb-1">
                                                 <svg aria-hidden="true" class="w-5 h-5 {{ $row->rate_point >= 1 ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-500' }}  " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -55,10 +55,10 @@
                                         </div>
                                         <div class="flex justify-end gap-2 items-center px-10 mt-5 mb-5">
                                             <div>
-                                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded"><i class="fas fa-edit"></i></button>
+                                                <a href="{{ route('servicer.service.update', $row->id_svc) }}"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded"><i class="fas fa-edit"></i></button></a>
                                             </div>
                                             <div>
-                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-10 rounded"><i class="fas fa-times"></i></button>
+                                                <button onclick="deleteConfirmation('{{ route('servicer.service.delete', $row->id_svc) }}')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-10 rounded"><i class="fas fa-trash"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -90,3 +90,36 @@
         </div>
     </div>
 @endsection
+@push('page-scripts')
+    <script>
+        function deleteConfirmation(url) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You're cant redo this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sure, Delete!',
+                cancelButtonText: 'Cancle'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = url;
+                }
+            });
+        }
+    </script>
+@endpush
+@push('page-scripts')
+    @if (Session::has('Success'))
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: '{{ Session::get('Success') }}',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#00D381'
+            });
+        </script>
+    @endif
+@endpush

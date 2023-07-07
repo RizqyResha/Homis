@@ -21,8 +21,10 @@ class ServiceFactory extends Factory
         return [
             'id_servicer' => fake()->numberBetween(1, Servicer::count()),
             'id_svc_category' => fake()->numberBetween(1, ServiceCategory::count()),
+            'svc_name' => fake()->sentence(1),
             'thumbnail_image' => 'noimage',
-            'description' => fake()->sentence(20)
+            'description' => fake()->sentence(20),
+            'delete_status' => 0
         ];
     }
 }

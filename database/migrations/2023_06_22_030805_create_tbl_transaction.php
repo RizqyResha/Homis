@@ -17,8 +17,10 @@ return new class extends Migration {
             $table->integer('id_svc')->index('id_svc');
             $table->integer('id_client')->index('id_client');
             $table->dateTime('transaction_date');
+            $table->string('period_type');
             $table->string('status');
             $table->integer('price_total');
+            $table->integer('confirm_point');
         });
     }
 
