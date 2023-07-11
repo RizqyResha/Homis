@@ -29,6 +29,7 @@ class Servicer extends Authenticatable
         'gender',
         'address',
         'phone_no',
+        'balance',
         'isActive',
         'created_at',
         'updated_at',

@@ -21,11 +21,13 @@ class TransactionFactory extends Factory
         return [
             'id_svc' => rand(1, Service::count()),
             'id_client' => rand(1, Client::count()),
-            'transaction_date' => fake()->dateTime(),
+            'transaction_date' => fake()->dateTimeBetween($startDate = '-1 years', $endDate = '-5 month', $timezone = null),
+            'transaction_finish_date' => fake()->dateTimeBetween($startDate = '-4 month', $endDate = '-1 month', $timezone = null),
             'price_total' => rand(10000, 1000000),
             'period_type' => fake()->randomElement(['Hourly', 'Daily', 'Weekly', 'Monthly']),
-            'confirm_point' => 0,
-            'status' => 'Paid'
+            'confirm_client' => 0,
+            'confirm_servicer' => 0,
+            'status' => 'Pending'
         ];
     }
 }

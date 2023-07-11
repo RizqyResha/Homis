@@ -2,6 +2,30 @@
 @section('content')
     <div class="flex flex-wrap items-stretc -mx-3">
         <!-- card1 -->
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                <div class="flex-auto p-4">
+                    <div class="flex flex-row -mx-3">
+                        <div class="flex-none w-2/3 max-w-full px-3">
+                            <div>
+                                <p class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">Your Balance</p>
+                                <h5 class=" font-bold text-2xl dark:text-white">Rp.{{ number_format($balance) }}</h5>
+                                <p class="mb-0 dark:text-white dark:opacity-60">
+                                    <a href="{{ route('servicer.billing') }}" class="text-sm text-blue-500">Cash Out Here</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-3 text-right basis-1/3">
+                            <div class="inline-block w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-emerald-500 to-teal-400">
+                                <i class="leading-none fas fa-money-bills text-lg relative top-3.5 text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- card3 -->
         <div class="w-full max-w-full h-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div class="flex-auto p-4">
@@ -55,7 +79,6 @@
             </div>
         </div>
 
-        <!-- card2 -->
         <div class="w-full max-w-full h-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div class="flex-auto p-4">
@@ -73,31 +96,6 @@
                         <div class="px-3 text-right basis-1/3">
                             <div class="inline-block w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-red-600 to-orange-600">
                                 <i class="leading-none fas fa-money-bill text-lg relative top-3.5 text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- card3 -->
-        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
-                    <div class="flex flex-row -mx-3">
-                        <div class="flex-none w-2/3 max-w-full px-3">
-                            <div>
-                                <p class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">this month transact</p>
-                                <h5 class="mb-2 font-bold dark:text-white">{{ $this_month_transaction }}</h5>
-                                <p class="mb-0 dark:text-white dark:opacity-60">
-                                    <span class="text-sm font-bold leading-normal {{ $month_transaction_percentage >= 0 ? 'text-emerald-400' : 'text-red-600' }}">{{ number_format($month_transaction_percentage, 1) }}%</span>
-                                    <a class="text-sm">Since last Month</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="px-3 text-right basis-1/3">
-                            <div class="inline-block w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-emerald-500 to-teal-400">
-                                <i class="leading-none fas fa-money-bills text-lg relative top-3.5 text-white"></i>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,6 @@ class ServicerSeeder extends Seeder
      */
     public function run(): void
     {
-        Servicer::factory()->count(10)->create();
+        Servicer::factory()->count(1)->create();
     }
 }

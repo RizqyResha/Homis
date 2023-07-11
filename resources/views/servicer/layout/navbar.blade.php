@@ -1,24 +1,36 @@
 <!-- Navbar -->
+
 <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
     <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
         <nav>
             <!-- breadcrumb -->
             <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                 <li class="text-sm leading-normal">
-                    <a class="text-white opacity-50" href="javascript:;">Pages</a>
+                    <a class="text-white opacity-50" href="javascript:;">Page</a>
                 </li>
-                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']" aria-current="page">Dashboard</li>
+                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']" aria-current="page">Servicer</li>
             </ol>
-            <h6 class="mb-0 font-bold text-white capitalize">Dashboard</h6>
         </nav>
 
         <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
             <div class="flex items-center md:ml-auto md:pr-4">
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
-                    <span class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
-                        <i class="fas fa-search"></i>
-                    </span>
-                    <input type="text" class="pl-9 text-sm focus:shadow-primary-outline ease w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 dark:bg-slate-850 dark:text-white bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:transition-shadow" placeholder="Type here..." />
+                    <button class="px-4 py-2 w-full rounded bg-white border border-green-400 text-green-400" data-dropdown-toggle="profile-dropdown-delay" data-dropdown-delay="500" data-dropdown-trigger="hover" id="profile-dropdown">
+                        <div class="flex items-center space-x-2">
+                            <div class="flex-shrink-0">
+                                @if (\Auth::guard('servicer')->user()->profile_image == 'noimage' || \Auth::guard('servicer')->user()->profile_image == null)
+                                    <img class="w-5 h-5 rounded-full" src="{{ asset('assets/img/blank-profile.webp') }}" alt="Neil image">
+                                @else
+                                    <img class="w-5 h-5 rounded-full" src="{{ asset('assets/img/servicer/profile-img/' . \Auth::guard('servicer')->user()->profile_image) }}" alt="Neil image">
+                                @endif
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                    {{ \Auth::guard('servicer')->user()->username }}
+                                </p>
+                            </div>
+                        </div>
+                    </button>
                 </div>
             </div>
             <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
@@ -28,8 +40,15 @@
       </li> -->
                 <li class="flex items-center">
                     <a href="./pages/sign-in.html" class="block px-0 py-2 text-sm font-semibold text-white transition-all ease-nav-brand">
-                        <i class="fa fa-user sm:mr-1"></i>
-                        <span class="hidden sm:inline">Sign In</span>
+                        <button class="px-4 py-2 w-full rounded bg-white border border-green-400 text-green-400" data-dropdown-toggle="profile-dropdown-delay" data-dropdown-delay="500" data-dropdown-trigger="hover" id="profile-dropdown">
+                            <div class="flex items-center space-x-2">
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                        Balance : Rp. {{ number_format(\Auth::guard('servicer')->user()->balance) }}
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
                     </a>
                 </li>
                 <li class="flex items-center pl-4 xl:hidden">
@@ -41,7 +60,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="flex items-center px-4">
+                {{-- <li class="flex items-center px-4">
                     <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
                         <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog"></i>
                         <!-- fixed-plugin-button-nav  -->
@@ -121,7 +140,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

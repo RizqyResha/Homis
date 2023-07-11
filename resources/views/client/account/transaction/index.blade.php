@@ -1,4 +1,4 @@
-@extends('servicer.layout.master')
+@extends('client.account.layout.master')
 @section('content')
     <div class="-mx-3">
         <div class="flex-none px-3">
@@ -16,67 +16,68 @@
                             <div class="border-b border-gray-200 dark:border-gray-700">
                                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
                                     <li class="mr-2">
-                                        @if (Route::is('servicer.transaction'))
+                                        @if (Route::is('client.transaction'))
                                             <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
                                             @else
-                                                <a href="{{ route('servicer.transaction') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                                <a href="{{ route('client.transaction') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
                                         @endif
                                         All Transaction
                                         </a>
                                     </li>
                                     <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.paid'))
+                                        @if (Route::is('client.transaction.pending'))
                                             <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
                                             @else
-                                                <a href="{{ route('servicer.transaction.paid') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
-                                        @endif Paid
-                                        </a>
-                                    </li>
-                                    <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.pending'))
-                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
-                                            @else
-                                                <a href="{{ route('servicer.transaction.pending') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                                <a href="{{ route('client.transaction.pending') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
                                         @endif Pending
                                         </a>
                                     </li>
                                     <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.process'))
+                                        @if (Route::is('client.transaction.accepted'))
                                             <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
                                             @else
-                                                <a href="{{ route('servicer.transaction.process') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
-                                        @endif Process
-                                        </a>
-                                    </li>
-                                    <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.finished'))
-                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
-                                            @else
-                                                <a href="{{ route('servicer.transaction.finished') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
-                                        @endif Finished
-                                        </a>
-                                    </li>
-                                    <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.accepted'))
-                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
-                                            @else
-                                                <a href="{{ route('servicer.transaction.accepted') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                                <a href="{{ route('client.transaction.accepted') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
                                         @endif Accepted
                                         </a>
                                     </li>
                                     <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.rejected'))
+                                        @if (Route::is('client.transaction.paid'))
                                             <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
                                             @else
-                                                <a href="{{ route('servicer.transaction.rejected') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                                <a href="{{ route('client.transaction.paid') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                        @endif Paid
+                                        </a>
+                                    </li>
+
+                                    <li class="mr-2">
+                                        @if (Route::is('client.transaction.process'))
+                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
+                                            @else
+                                                <a href="{{ route('client.transaction.process') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                        @endif Process
+                                        </a>
+                                    </li>
+                                    <li class="mr-2">
+                                        @if (Route::is('client.transaction.finished'))
+                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
+                                            @else
+                                                <a href="{{ route('client.transaction.finished') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                        @endif Finished
+                                        </a>
+                                    </li>
+                                    <li class="mr-2">
+                                        @if (Route::is('client.transaction.rejected'))
+                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
+                                            @else
+                                                <a href="{{ route('client.transaction.rejected') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
                                         @endif Rejected
                                         </a>
                                     </li>
                                     <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.canceled'))
+                                        @if (Route::is('client.transaction.canceled'))
                                             <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
                                             @else
-                                                <a href="{{ route('servicer.transaction.canceled') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                                <a href="{{ route('client.transaction.canceled') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
                                         @endif Canceled
                                         </a>
                                     </li>
@@ -90,7 +91,7 @@
                                         <div class=" mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
                                             <div class="grid xl:grid-cols-6 grid-cols-2">
                                                 <div class="">
-                                                    <p class="font-semibold text-gray-500 xl:text-lg">Client Name</p>
+                                                    <p class="font-semibold text-gray-500 xl:text-lg">Servicer Name</p>
                                                     <p class="mt-2">{{ $row->first_name }} {{ $row->last_name }}</p>
                                                 </div>
                                                 <div class="">
@@ -123,24 +124,22 @@
                                                     @elseif($row->status == 'Canceled')
                                                         <p class="mt-2 text-gray-400">{{ $row->status }}</p>
                                                     @endif
-
-
                                                 </div>
                                                 <div class="">
                                                     <p class="font-semibold text-gray-500 text-lg text-center">Action</p>
                                                     <div class="grid grid-cols-2 gap-1 xl:px-14 px-5 ">
                                                         <Button class="mt-2 background bg-blue-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-eye"></i></Button>
                                                         @if ($row->status == 'Pending')
-                                                            <Button onclick="Acceptfirmation('{{ route('servicer.transaction.update.accepted', $row->id_transaction) }}')" class="mt-2 background bg-green-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-check-square"></i></Button>
-                                                            <Button onclick="Rejectfirmation('{{ route('servicer.transaction.update.rejected', $row->id_transaction) }}')" class="background bg-red-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
-                                                        @elseif($row->status == 'Unpaid')
-                                                            <Button disabled class="mt-2 background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-check-square"></i></Button>
-                                                            <Button disabled class="background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
+                                                            <Button disabled class="mt-2 background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-money-bill-wave"></i></Button>
+                                                            <Button onclick="Cancelfirmation('{{ route('client.transaction.update.cancel', $row->id_transaction) }}')" class="background bg-red-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
+                                                        @elseif($row->status == 'Accepted(Unpaid)')
+                                                            <a href="{{ route('client.transaction.pay.fromlist', $row->id_transaction) }}" type="submit" class="mt-2 background bg-green-500 rounded text-white font-semibold  w-full text-center p-2"><i class="fas fa-money-bill-wave"></i></a>
+                                                            <Button onclick="Cancelfirmation('{{ route('client.transaction.update.cancel', $row->id_transaction) }}')" class="background bg-red-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
                                                         @elseif ($row->status == 'Paid')
-                                                            <Button disabled class="mt-2 background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-check-square"></i></Button>
+                                                            <Button onclick="Proccessfirmation('{{ route('client.transaction.update.process', $row->id_transaction) }}')" class="mt-2 background bg-green-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-clipboard-list"></i></Button>
                                                             <Button disabled class="background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
                                                         @elseif($row->status == 'Process')
-                                                            <Button onclick="Finishfirmation('{{ route('servicer.transaction.update.finished', $row->id_transaction) }}')" class="mt-2 background bg-green-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-clipboard-check"></i></Button>
+                                                            <Button onclick="Finishfirmation('{{ route('client.transaction.update.finished', $row->id_transaction) }}')" class="mt-2 background bg-green-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-clipboard-check"></i></Button>
                                                             <Button disabled class="background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
                                                         @else
                                                             <Button disabled class="mt-2 background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-check-square"></i></Button>
@@ -160,8 +159,6 @@
                                 <div class="pagination mt-2">{!! $data->links('components.pagination') !!}</div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -183,16 +180,16 @@
 
 
     <script>
-        // Accept
-        function Acceptfirmation(url) {
+        // Cancel
+        function Cancelfirmation(url) {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You will change the Unpaid status to Accepted(Unpaid), which means you are waiting for the Client to pay",
+                text: "You will change the status to Cancel, which means you are Canceling the Contract",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'i Accept it !',
+                confirmButtonText: 'i Cancel it !',
                 cancelButtonText: 'Cancel',
             }).then((result) => {
                 if (result.isConfirmed) {
@@ -234,61 +231,11 @@
             });
         }
 
-        // Reject
-        function Rejectfirmation(url) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You will change the Unpaid status to Reject, which means you are Rejecting The Client Request",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'i Accept it !',
-                cancelButtonText: 'Cancel',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: url,
-                        type: 'POST',
-                        data: {
-                            _token: '{!! csrf_token() !!}',
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                // Update the div content
-                                $('#transactions').load(location.href + ' #transactions');
-                                // Show success message
-                                Swal.fire({
-                                    title: 'Success',
-                                    text: response.message,
-                                    icon: 'success'
-                                });
-                            } else {
-                                // Show error message
-                                Swal.fire({
-                                    title: 'Error',
-                                    text: response.message,
-                                    icon: 'error'
-                                });
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            // Show error message
-                            Swal.fire({
-                                title: 'Error',
-                                text: 'An error occurred while processing the request.',
-                                icon: 'error'
-                            });
-                        }
-                    });
-                }
-            });
-        }
         // process
         function Proccessfirmation(url) {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You will change the paid status to process, which means you are processing your services",
+                text: "You will change the paid status to process, which means servicer start to work",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -335,12 +282,10 @@
             });
         }
 
-        // Finish
-
         function Finishfirmation(url) {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You will change the paid status to Finished, which means you Already Finish your work",
+                text: "You will change the Process status to Finished, which means the servicer already finished work",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

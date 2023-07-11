@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('first_name', 25);
             $table->string('last_name', 25)->nullable();
             $table->string('gender', 20);
+            $table->integer('balance')->nullable();
             $table->text('address')->nullable();
             $table->string('phone_no', 20)->nullable();
             $table->char('isActive', 1)->nullable();

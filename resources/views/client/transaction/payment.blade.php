@@ -35,21 +35,13 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="grid grid-cols-2 mt-2 mb-2">
-                        <div>
-                            <p class="mt-3 text-xl text-gray-500">Contract Times</p>
-                        </div>
-                        <div>
-                            <p class="mt-3 text-xl text-end text-gray-500">{{ $data->period_qyt }}</p>
-                        </div>
-                    </div>
                     <hr>
                     <div class="grid grid-cols-2 mt-2 mb-5">
                         <div>
                             <p class="mt-3 text-xl text-gray-500">Administration Fee</p>
                         </div>
                         <div>
-                            <p class="mt-3 text-xl text-end text-gray-500">{{ $data->admin_fee }}%</p>
+                            <p class="mt-3 text-xl text-end text-gray-500">{{ $admin_fee }}%</p>
                         </div>
                     </div>
                     <hr class="border-4">
@@ -58,7 +50,7 @@
                             <p class="mt-3 text-xl text-gray-500">Sub Total</p>
                         </div>
                         <div>
-                            <p class="mt-3 text-xl text-end text-gray-500">Rp. {{ number_format($data->sub_total, 2) }}</p>
+                            <p class="mt-3 text-xl text-end text-gray-500">Rp. {{ number_format($sub_total, 2) }}</p>
                         </div>
                     </div>
                     <div class="flex justify-end mt-6">
@@ -73,7 +65,7 @@
                                 onSuccess: function(result) {
                                     /* You may add your own implementation here */
                                     alert("payment success!");
-                                    console.log(result);
+                                    window.location.href = "{{ route('client.transaction.afterpay') }}";
                                 },
                                 onPending: function(result) {
                                     /* You may add your own implementation here */

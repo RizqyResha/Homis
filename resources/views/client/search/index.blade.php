@@ -62,7 +62,7 @@
                 @foreach ($data as $row)
                     <a href="{{ route('client.service.view', ['id_svc' => $row->id_svc]) }}">
                         <div class="flex h-full w-full justify-center">
-                            <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
+                            <div class="bg-wh   ite border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
                                 <div class="grid xl:grid-cols-3 xl:grid-cols-2">
                                     <div class="justify-center justify-self-center mx-auto">
                                         @if ($row->thumbnail_image == 'noimage')
@@ -124,9 +124,6 @@
                     </a>
                 @endforeach
                 {{-- End-item1 --}}
-
-
-
             </div>
             <div class="flex justify-center">
                 <div class="pagination">{!! $data->links('components.pagination') !!}</div>

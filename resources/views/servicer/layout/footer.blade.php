@@ -26,7 +26,9 @@
                     <li class="nav-item">
                         <a href="https://www.creative-tim.com/license" class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-in-out text-slate-500" target="_blank">License</a>
                     </li>
+
                 </ul>
+
             </div>
         </div>
     </div>

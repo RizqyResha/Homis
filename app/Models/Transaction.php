@@ -16,7 +16,10 @@ class Transaction extends Model
         'id_svc',
         'id_client',
         'price_per_period',
-        'confirm_pint',
+        'transaction_date',
+        'transaction_finish_date',
+        'confirm_servicer',
+        'confirm_client',
         'period_type',
         'status'
 

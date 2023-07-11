@@ -24,35 +24,40 @@ class ServicerDashboardController extends Controller
             ->join('tbl_svc', 'tbl_svc.id_svc', '=', 'tbl_transaction.id_svc')
             ->join('tbl_servicer', 'tbl_servicer.id_servicer', '=', 'tbl_svc.id_servicer')
             ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
-            ->whereMonth('tbl_transaction.transaction_date', '=', Carbon::now()->month)
-            ->whereYear('tbl_transaction.transaction_date', '=', Carbon::now()->year)
+            ->where('tbl_transaction.status', 'Finished')
+            ->whereMonth('tbl_transaction.transaction_finish_date', '=', Carbon::now()->month)
+            ->whereYear('tbl_transaction.transaction_finish_date', '=', Carbon::now()->year)
             ->sum('tbl_transaction.price_total');
         $get_this_month_transaction = Transaction::select('tbl_transaction.price_total')
             ->join('tbl_svc', 'tbl_svc.id_svc', '=', 'tbl_transaction.id_svc')
             ->join('tbl_servicer', 'tbl_servicer.id_servicer', '=', 'tbl_svc.id_servicer')
             ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
-            ->whereMonth('tbl_transaction.transaction_date', '=', Carbon::now()->month)
-            ->whereYear('tbl_transaction.transaction_date', '=', Carbon::now()->year)
+            ->where('tbl_transaction.status', 'Finished')
+            ->whereMonth('tbl_transaction.transaction_finish_date', '=', Carbon::now()->month)
+            ->whereYear('tbl_transaction.transaction_finish_date', '=', Carbon::now()->year)
             ->count('tbl_transaction.price_total');
         $total_transaction = Transaction::select('tbl_transaction.price_total')
             ->join('tbl_svc', 'tbl_svc.id_svc', '=', 'tbl_transaction.id_svc')
             ->join('tbl_servicer', 'tbl_servicer.id_servicer', '=', 'tbl_svc.id_servicer')
             ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+            ->where('tbl_transaction.status', 'Finished')
             ->count('tbl_transaction.price_total');
+
+        $get_balance = Auth::guard('servicer')->user()->balance;
 
         $get_last_month_earn = Transaction::select('tbl_transaction.price_total')
             ->join('tbl_svc', 'tbl_svc.id_svc', '=', 'tbl_transaction.id_svc')
             ->join('tbl_servicer', 'tbl_servicer.id_servicer', '=', 'tbl_svc.id_servicer')
             ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
-            ->whereMonth('tbl_transaction.transaction_date', '=', Carbon::now()->month - 1)
-            ->whereYear('tbl_transaction.transaction_date', '=', Carbon::now()->year)
+            ->whereMonth('tbl_transaction.transaction_finish_date', '=', Carbon::now()->month - 1)
+            ->whereYear('tbl_transaction.transaction_finish_date', '=', Carbon::now()->year)
             ->sum('tbl_transaction.price_total');
         $get_last_month_transaction = Transaction::select('tbl_transaction.price_total')
             ->join('tbl_svc', 'tbl_svc.id_svc', '=', 'tbl_transaction.id_svc')
             ->join('tbl_servicer', 'tbl_servicer.id_servicer', '=', 'tbl_svc.id_servicer')
             ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
-            ->whereMonth('tbl_transaction.transaction_date', '=', Carbon::now()->month - 1)
-            ->whereYear('tbl_transaction.transaction_date', '=', Carbon::now()->year)
+            ->whereMonth('tbl_transaction.transaction_finish_date', '=', Carbon::now()->month - 1)
+            ->whereYear('tbl_transaction.transaction_finish_date', '=', Carbon::now()->year)
             ->count('tbl_transaction.price_total');
         if ($get_last_month_earn == null && $get_this_month_earning == null) {
             $percentage_month_earn = 0;
@@ -68,7 +73,7 @@ class ServicerDashboardController extends Controller
         $datachrt = array();
         for ($i = 1; $i <= 12; $i++) {
             ${'data' . $i} = Transaction::join('tbl_svc', 'tbl_svc.id_svc', '=', 'tbl_transaction.id_svc')->join('tbl_servicer', 'tbl_servicer.id_servicer', '=', 'tbl_svc.id_servicer')
-                ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)->whereMonth('transaction_date', '=', $i)->whereYear('transaction_date', '=', Carbon::now()->year)->groupBy('transaction_date')->sum('price_total');
+                ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)->whereMonth('transaction_finish_date', '=', $i)->whereYear('transaction_finish_date', '=', Carbon::now()->year)->groupBy('transaction_finish_date')->sum('price_total');
             if (${'data' . $i} == null) {
                 ${'data' . $i} = "0";
             }
@@ -104,7 +109,8 @@ class ServicerDashboardController extends Controller
             'month_earn_percentage' => $percentage_month_earn,
             'month_transaction_percentage' => $percentage_month_transact,
             'datachrt' => $datachrt,
-            'services' => $services
+            'services' => $services,
+            'balance' => $get_balance
         ], compact('feedback'));
 
     }

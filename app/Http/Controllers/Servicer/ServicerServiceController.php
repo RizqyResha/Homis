@@ -52,7 +52,7 @@ class ServicerServiceController extends Controller
             'svc_name' => 'required|min:3|max:100',
             'description' => 'required',
         ]);
-        $get_svc_cat_id = ServiceCategory::select('id_svc_category')->where('svc_category_name', $request->svc_category_name)->first();
+        $get_svc_cat_id = ServiceCategory::select('id_svc_category')->where('svc_category_name', $request->svc_category_name)->pluck('id_svc_category');
 
         //lokasi file foto di simpan
         $file_loc = public_path('/assets/img/services');
@@ -72,7 +72,7 @@ class ServicerServiceController extends Controller
             $service_id = Service::insertGetId([
                 'id_servicer' => $idsvc,
                 'svc_name' => $request->svc_name,
-                'id_svc_category' => $get_svc_cat_id->id_svc_category,
+                'id_svc_category' => $get_svc_cat_id,
                 'thumbnail_image' => $img_svc_name,
                 'description' => $request->description,
                 'delete_status' => 0
@@ -172,7 +172,7 @@ class ServicerServiceController extends Controller
 
     public function edit(Request $request)
     {
-        $get_svc_cat_id = ServiceCategory::select('id_svc_category')->where('svc_category_name', $request->svc_category_name)->first();
+        $get_svc_cat_id = ServiceCategory::select('id_svc_category')->where('svc_category_name', $request->svc_category_name)->pluck('id_svc_category')->first();
         if (!empty($request->file_upload)) {
             $file_loc = public_path('/assets/img/services');
             $img_file = $request->file('file_upload');
@@ -221,7 +221,7 @@ class ServicerServiceController extends Controller
             ->update([
                 'price_per_period' => $request->monthly,
             ]);
-        return redirect()->route('servicer.service')->with('Success', 'Your Service Already Deleted!');
+        return redirect()->route('servicer.service')->with('Success', 'Your Service Already Updated !');
     }
     public function delete(Request $request)
     {

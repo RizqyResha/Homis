@@ -32,6 +32,9 @@ if (document.querySelector("[slider]")) {
 if (document.querySelector("nav [navbar-trigger]")) {
     loadJS("../assets/js/navbar-collapse.js", true);
 }
+if (document.querySelector("[navbar-trigger]")) {
+    loadJS("../assets/js/navbar-collapse.js", true);
+}
 
 if (document.querySelector("[data-target='tooltip']")) {
     loadJS("../assets/js/tooltips.js", true);

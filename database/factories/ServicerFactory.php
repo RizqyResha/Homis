@@ -30,6 +30,7 @@ class ServicerFactory extends Factory
             'address' => fake()->address,
             'phone_no' => fake()->phoneNumber,
             'isActive' => '1',
+            'balance' => 0,
             'created_at' => now(),
             'updated_at' => now(),
             'delete_status' => '0',
