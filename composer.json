@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "midtrans/midtrans-php": "^2.5",
+        "munafio/chatify": "^1.6",
         "realrashid/sweet-alert": "^7.0"
     },
     "require-dev": {

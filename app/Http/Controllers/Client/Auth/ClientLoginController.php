@@ -29,7 +29,7 @@ class ClientLoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password]) && Auth::guard('web')->attempt(['user_type' => 'client', 'email' => $request->email, 'password' => $request->password])) {
             // Pindah ke halaman dashboard
             return redirect()->intended('/');
         } else {

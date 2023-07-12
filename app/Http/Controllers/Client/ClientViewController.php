@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feedback;
+use App\Models\Servicer;
+use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
 
@@ -64,6 +66,11 @@ class ClientViewController extends Controller
             ->where('tbl_svc.id_svc', $id_svc)
             ->where('tbl_feedback.rate_point', 1)
             ->count('tbl_feedback.rate_point');
+        $servicer_id = Servicer::select('id_servicer')
+            ->join('tbl_svc', 'tbl_svc.id_servicer', 'tbl_servicer.id_servicer')
+            ->where('tbl_svc.id_svc', $id_svc)
+            ->get();
+        return dd($servicer_id);
         return view(
             'client.view.index',
             [
@@ -74,7 +81,8 @@ class ClientViewController extends Controller
                 'four' => $four,
                 'three' => $three,
                 'two' => $two,
-                'one' => $one
+                'one' => $one,
+                'id' => $getusid
             ]
         );
     }

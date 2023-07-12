@@ -27,7 +27,7 @@ class ServicerLoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::guard('servicer')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('servicer')->attempt(['email' => $request->email, 'password' => $request->password]) && Auth::guard('web')->attempt(['user_type' => 'servicer', 'email' => $request->email, 'password' => $request->password])) {
             // Pindah ke halaman dashboard
             return redirect()->intended('/servicer/dashboard');
         } else {

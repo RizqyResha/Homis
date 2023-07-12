@@ -40,6 +40,8 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        //user
+        //end-user
 
         //client
         'client' => [

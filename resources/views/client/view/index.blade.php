@@ -188,7 +188,7 @@
                                     <div class="grid grid-cols-2">
                                         <div class="flex xl:justify-start">
                                             <button type="submit" class="mr-4 background item-end bg-white border-2 border-green-500 xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 text-green-400 font-bold rounded"><i class="fas fa-comments"></i> Chat</button>
-                                            <button type="submit" class="background item-end bg-green-500  text-white xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 font-bold rounded">Contract</button>
+                                            <a href="{{ '/chat/' . $id }}"><button class="background item-end bg-green-500  text-white xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 font-bold rounded">Contract</button></a>
                                         </div>
                                     </div>
                                 </div>
