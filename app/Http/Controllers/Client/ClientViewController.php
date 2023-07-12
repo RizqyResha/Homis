@@ -66,11 +66,13 @@ class ClientViewController extends Controller
             ->where('tbl_svc.id_svc', $id_svc)
             ->where('tbl_feedback.rate_point', 1)
             ->count('tbl_feedback.rate_point');
-        $servicer_id = Servicer::select('id_servicer')
+        $getusid = User::select('id')
+            ->join('tbl_servicer', 'tbl_servicer.id_servicer', 'users.user_id')
             ->join('tbl_svc', 'tbl_svc.id_servicer', 'tbl_servicer.id_servicer')
+            ->where('users.user_type', 'servicer')
             ->where('tbl_svc.id_svc', $id_svc)
-            ->get();
-        return dd($servicer_id);
+            ->pluck('users.id')->first();
+        // return dd($servicer_id);
         return view(
             'client.view.index',
             [

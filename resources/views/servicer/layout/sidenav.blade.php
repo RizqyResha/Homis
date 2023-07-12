@@ -39,11 +39,10 @@
                 </div>
                 <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Services</span>
                 </a>
-
             </li>
 
             <li class="mt-0.5 w-full">
-                @if (Route::is('servicer.transaction'))
+                @if (Route::is('servicer.transaction') || Route::is('servicer.transaction.pending') || Route::is('servicer.transaction.accepted') || Route::is('servicer.transaction.process') || Route::is('servicer.transaction.paid') || Route::is('servicer.transaction.finished') || Route::is('servicer.transaction.rejected') || Route::is('servicer.transaction.canceled'))
                     <a class="py-2.7 bg-blue-500/13 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors" href="#">
                     @else
                         <a href="{{ route('servicer.transaction') }}" class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors" href="#">

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    <link rel="icon" type="image/png" href="../assets/img/logo-only.png" />
     <title>Homis | Login</title>
     @vite('resources/css/app.css')
 </head>
@@ -85,7 +86,7 @@
                         <a href=""><button class="px-4 py-2 w-full bg-white border border-gray-300 flex justify-center"><img src="{{ asset('assets/img/twt2.png') }}" class="" alt="" width="30px" srcset=""></button></a>
                     </div>
                     <p class="text-sm font-light text-gray-900 dark:text-gray-400">
-                        Don’t have an account yet? <a href="#" class="font-medium text-green-600 hover:underline ">Sign up</a>
+                        Don’t have an account yet? <a href="{{ route('register') }}" class="font-medium text-green-600 hover:underline ">Sign up</a>
                     </p>
                 </div>
             </div>

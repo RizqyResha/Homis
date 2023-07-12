@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Servicer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Servicer;
-use Auth;
+use App\Models\User;
+use Chatify\Facades\ChatifyMessenger as Chatify;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Image;
 use Illuminate\Http\Request;
 
@@ -118,7 +121,35 @@ class ServicerAccountController extends Controller
             $resize_foto_servicer = Image::make($img_file->getRealPath());
             $resize_foto_servicer->resize(320, 220)->save($file_loc . '/' . $img_servicer_name);
 
+            if ($request->hasFile('file_upload')) {
+                // allowed extensions
+                $allowed_images = Chatify::getAllowedImages();
 
+                $file = $request->file('file_upload');
+                // check file size
+                if ($file->getSize() < Chatify::getMaxUploadSize()) {
+                    if (in_array(strtolower($file->extension()), $allowed_images)) {
+                        // delete the older one
+                        if (Auth::user()->avatar != config('chatify.user_avatar.default')) {
+                            $avatar = Auth::user()->avatar;
+                            if (Chatify::storage()->exists(strval($avatar))) {
+                                Chatify::storage()->delete(strval($avatar));
+                            }
+                        }
+                        // upload
+                        $avatar = Str::uuid() . "." . $file->extension();
+                        $update = User::where('id', Auth::user()->id)->update(['avatar' => $avatar]);
+                        $file->storeAs(config('chatify.user_avatar.folder'), $avatar, config('chatify.storage_disk_name'));
+                        $success = $update ? 1 : 0;
+                    } else {
+                        $msg = "File extension not allowed!";
+                        $error = 1;
+                    }
+                } else {
+                    $msg = "File size you are trying to upload is too large!";
+                    $error = 1;
+                }
+            }
 
             if ($request->password != "") {
                 Servicer::where('id_servicer', Auth::guard('servicer')->user()->id_servicer)
@@ -133,6 +164,15 @@ class ServicerAccountController extends Controller
                         'updated_at' => now(),
                         'email' => $request->email
                     ]);
+                User::where('user_id', Auth::guard('servicer')->user()->id_servicer)->where('user_type', 'servicer')
+                    ->update([
+                        'email' => $request->email,
+                        'name' => $request->username,
+                        'password' => bcrypt($request->password),
+                        'updated_at' => now(),
+                        'avatar' => $avatar,
+                        'messenger_color' => '#4CAF50'
+                    ]);
             } else {
                 Servicer::where('id_servicer', Auth::guard('servicer')->user()->id_servicer)
                     ->update([
@@ -144,6 +184,15 @@ class ServicerAccountController extends Controller
                         'profile_image' => $img_servicer_name,
                         'updated_at' => now(),
                         'email' => $request->email
+                    ]);
+
+                User::where('user_id', Auth::guard('servicer')->user()->id_servicer)->where('user_type', 'servicer')
+                    ->update([
+                        'email' => $request->email,
+                        'name' => $request->username,
+                        'updated_at' => now(),
+                        'avatar' => $avatar,
+                        'messenger_color' => '#4CAF50'
                     ]);
             }
 
@@ -160,6 +209,14 @@ class ServicerAccountController extends Controller
                         'updated_at' => now(),
                         'email' => $request->email
                     ]);
+                User::where('user_id', Auth::guard('servicer')->user()->id_servicer)->where('user_type', 'servicer')
+                    ->update([
+                        'email' => $request->email,
+                        'name' => $request->username,
+                        'password' => bcrypt($request->password),
+                        'updated_at' => now(),
+                        'messenger_color' => '#4CAF50'
+                    ]);
             } else {
                 Servicer::where('id_servicer', Auth::guard('servicer')->user()->id_servicer)
                     ->update([
@@ -170,6 +227,13 @@ class ServicerAccountController extends Controller
                         'address' => $request->address,
                         'updated_at' => now(),
                         'email' => $request->email
+                    ]);
+                User::where('user_id', Auth::guard('servicer')->user()->id_servicer)->where('user_type', 'servicer')
+                    ->update([
+                        'email' => $request->email,
+                        'name' => $request->username,
+                        'updated_at' => now(),
+                        'messenger_color' => '#4CAF50'
                     ]);
             }
         }

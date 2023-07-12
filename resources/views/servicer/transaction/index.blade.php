@@ -11,7 +11,6 @@
 
                 <div class="flex-auto px-0 pt-0 pb-2">
                     <div class="p-0 overflow-x-auto">
-
                         <div class="">
                             <div class="border-b border-gray-200 dark:border-gray-700">
                                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
@@ -25,19 +24,27 @@
                                         </a>
                                     </li>
                                     <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.paid'))
-                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
-                                            @else
-                                                <a href="{{ route('servicer.transaction.paid') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
-                                        @endif Paid
-                                        </a>
-                                    </li>
-                                    <li class="mr-2">
                                         @if (Route::is('servicer.transaction.pending'))
                                             <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
                                             @else
                                                 <a href="{{ route('servicer.transaction.pending') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
                                         @endif Pending
+                                        </a>
+                                    </li>
+                                    <li class="mr-2">
+                                        @if (Route::is('servicer.transaction.accepted'))
+                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
+                                            @else
+                                                <a href="{{ route('servicer.transaction.accepted') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                        @endif Accepted
+                                        </a>
+                                    </li>
+                                    <li class="mr-2">
+                                        @if (Route::is('servicer.transaction.paid'))
+                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
+                                            @else
+                                                <a href="{{ route('servicer.transaction.paid') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                        @endif Paid
                                         </a>
                                     </li>
                                     <li class="mr-2">
@@ -54,14 +61,6 @@
                                             @else
                                                 <a href="{{ route('servicer.transaction.finished') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
                                         @endif Finished
-                                        </a>
-                                    </li>
-                                    <li class="mr-2">
-                                        @if (Route::is('servicer.transaction.accepted'))
-                                            <a href="#" class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" aria-current="page">
-                                            @else
-                                                <a href="{{ route('servicer.transaction.accepted') }}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
-                                        @endif Accepted
                                         </a>
                                     </li>
                                     <li class="mr-2">
@@ -84,7 +83,7 @@
                             </div>
                             <div id="transactions">
                                 <div class="pagination mt-4">{!! $data->links('components.pagination') !!}</div>
-                                @php $collection = $data @endphp
+                                {{-- @php $collection = $data @endphp --}}
                                 @if (!$data->isEmpty())
                                     @foreach ($data as $row)
                                         <div class=" mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
@@ -105,7 +104,6 @@
                                                     <p class="font-semibold text-gray-500 xl:text-lg">Transaction Date</p>
                                                     <p class="mt-2">{{ $row->transaction_date }}</p>
                                                 </div>
-
                                                 <div class="">
                                                     <p class="font-semibold text-gray-500 xl:text-lg">Status</p>
                                                     @if ($row->status == 'Pending')
@@ -146,7 +144,7 @@
                                                             <Button disabled class="mt-2 background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-check-square"></i></Button>
                                                             <Button disabled class="background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
                                                         @endif
-                                                        <Button class="background bg-yellow-400 rounded text-white font-semibold p-2 w-full"><i class="fas fa-comment-dots"></i></Button>
+                                                        <a target="_blank" href="/chat/{{ $row->userid }}"><Button class="background bg-yellow-400 rounded text-white font-semibold p-2 w-full"><i class="fas fa-comment-dots"></i></Button></a>
                                                     </div>
                                                 </div>
                                             </div>

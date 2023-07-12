@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DetailTransaction;
 use App\Models\Servicer;
 use App\Models\Transaction;
+use App\Models\User;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -16,92 +17,101 @@ class ServicerTransactionController extends Controller
     public function index()
     {
         if (Route::is('servicer.transaction')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
+                ->where('users.user_type', 'client')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
-
+            // return dd($data);
         } elseif (Route::is('servicer.transaction.paid')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
+                ->where('users.user_type', 'client')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('tbl_transaction.status', 'Paid')
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
-
         } elseif (Route::is('servicer.transaction.pending')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('tbl_transaction.status', 'Pending')
+                ->where('users.user_type', 'client')
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
-
         } elseif (Route::is('servicer.transaction.process')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+                ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Process')
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
-
-        } elseif (Route::is('servicer.transaction.process')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+        } elseif (Route::is('servicer.transaction.reject')) {
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+                ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Reject')
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
-
         } elseif (Route::is('servicer.transaction.accepted')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+                ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Accepted(Unpaid)')
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
-
         } elseif (Route::is('servicer.transaction.finished')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+                ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Finished')
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
+
         } elseif (Route::is('servicer.transaction.rejected')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+                ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Rejected')
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
+
         } elseif (Route::is('servicer.transaction.canceled')) {
-            $data = DetailTransaction::select('tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
+            $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
                 ->join('tbl_transaction', 'tbl_transaction.id_transaction', 'tbl_detail_transaction.id_transaction')
                 ->join('tbl_svc', 'tbl_svc.id_svc', 'tbl_transaction.id_svc')
+                ->join('users', 'tbl_transaction.id_client', 'users.user_id')
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+                ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Canceled')
                 ->paginate(5);
-            return view('servicer.transaction.index', ['data' => $data]);
         }
+
+        // return dd($data);
+        return view('servicer.transaction.index', ['data' => $data]);
 
     }
 

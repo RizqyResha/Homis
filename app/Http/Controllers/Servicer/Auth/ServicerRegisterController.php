@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Servicer\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Servicer;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class ServicerRegisterController extends Controller
             'confirm-password' => 'min:6'
         ]);
 
-        Servicer::create([
+        $servicer_id = Servicer::insertGetId([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'gender' => $request->gender,
@@ -40,6 +41,21 @@ class ServicerRegisterController extends Controller
             'password' => bcrypt($request->password),
             'created_at' => now(),
             'updated_at' => now()
+        ]);
+
+        User::create([
+            'user_id' => $servicer_id,
+            'user_type' => 'servicer',
+            'email' => $request->email,
+            'name' => $request->username,
+            'password' => bcrypt($request->password),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'active_status' => 0,
+            'avatar' => 'noimg',
+            'dark_mode' => 0,
+            'messenger_color' => '#4CAF50'
+
         ]);
         return redirect()->route('servicer.login')->with('regis', 'Berhasil Daftar, Silahkan login');
     }

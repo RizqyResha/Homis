@@ -187,8 +187,8 @@
                                 <div class="grid grid-rows-1 mb-10">
                                     <div class="grid grid-cols-2">
                                         <div class="flex xl:justify-start">
-                                            <button type="submit" class="mr-4 background item-end bg-white border-2 border-green-500 xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 text-green-400 font-bold rounded"><i class="fas fa-comments"></i> Chat</button>
-                                            <a href="{{ '/chat/' . $id }}"><button class="background item-end bg-green-500  text-white xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 font-bold rounded">Contract</button></a>
+                                            <a href="{{ '/chat/' . $id }}" target="_blank" class="mr-4 background item-end bg-white border-2 border-green-500 xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 text-green-400 font-bold rounded"><i class="fas fa-comments"></i> Chat</a>
+                                            <button type="submit" class="background item-end bg-green-500  text-white xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 font-bold rounded">Contract</button>
                                         </div>
                                     </div>
                                 </div>
@@ -217,11 +217,36 @@
                     <p class="text-center text-gray-600 mt-4 text-sm">{{ $data->total_reviewers }} <br> Reviewers</p>
                 </div>
                 @php
-                    $persentase5 = ($five / $data->total_reviewers) * 100;
-                    $persentase4 = ($four / $data->total_reviewers) * 100;
-                    $persentase3 = ($three / $data->total_reviewers) * 100;
-                    $persentase2 = ($two / $data->total_reviewers) * 100;
-                    $persentase1 = ($one / $data->total_reviewers) * 100;
+                    if ($five == 0) {
+                        $persentase5 = 0;
+                    } else {
+                        $persentase5 = ($five / $data->total_reviewers) * 100;
+                    }
+                    
+                    if ($four == 0) {
+                        $persentase4 = 0;
+                    } else {
+                        $persentase4 = ($four / $data->total_reviewers) * 100;
+                    }
+                    
+                    if ($three == 0) {
+                        $persentase3 = 0;
+                    } else {
+                        $persentase3 = ($three / $data->total_reviewers) * 100;
+                    }
+                    
+                    if ($two == 0) {
+                        $persentase2 = 0;
+                    } else {
+                        $persentase2 = ($two / $data->total_reviewers) * 100;
+                    }
+                    
+                    if ($one == 0) {
+                        $persentase1 = 0;
+                    } else {
+                        $persentase1 = ($one / $data->total_reviewers) * 100;
+                    }
+                    
                 @endphp
                 <div class="w-full">
                     <div class="flex items-center mt-1">

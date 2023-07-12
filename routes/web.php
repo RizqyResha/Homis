@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 // });
 // //Client
 Route::get('/register', [ClientRegisterController::class, 'index'])->name('register');
-Route::post('/register-process', [ClientRegisterController::class, 'process'])->name('client.register.process');
+Route::post('/client-register-process', [ClientRegisterController::class, 'process'])->name('client.register.process');
 
 Route::get('/', [ClientHomeController::class, 'index'])->middleware('guest')->name('home');
 Route::get('/login', [ClientLoginController::class, 'getLogin'])->middleware('guest')->name('client.login');
@@ -57,7 +57,7 @@ Route::group(['prefix' => '/client', 'middleware' => ['auth:client']], function 
     Route::get('/transactionlist-rejected', [ClientTransactionController::class, 'transactionlist'])->name('client.transaction.rejected');
     Route::get('/transactionlist-accepted', [ClientTransactionController::class, 'transactionlist'])->name('client.transaction.accepted');
     Route::get('/transactionlist-canceled', [ClientTransactionController::class, 'transactionlist'])->name('client.transaction.canceled');
-    Route::post('/transaction-process-{id_transaction}', [ClientTransactionController::class, 'UpdateStatusToProcess'])->name('client.transaction.update.process');
+    Route::get('/transaction-process-{id_transaction}', [ClientTransactionController::class, 'UpdateStatusToProcess'])->name('client.transaction.update.process');
     Route::post('/transaction-cancel-{id_transaction}', [ClientTransactionController::class, 'UpdateStatusToCancel'])->name('client.transaction.update.cancel');
     Route::post('/transaction-finish-{id_transaction}', [ClientTransactionController::class, 'UpdateStatusToFinish'])->name('client.transaction.update.finished');
     Route::post('/transaction-pay', [ClientTransactionController::class, 'pay'])->name('client.transaction.pay');
@@ -78,7 +78,7 @@ Route::group(['prefix' => '/client', 'middleware' => ['auth:client']], function 
 
 //Client
 Route::get('/servicer/register', [ServicerRegisterController::class, 'index'])->name('servicer.register');
-Route::post('/register-process', [ServicerRegisterController::class, 'process'])->name('servicer.register.process');
+Route::post('/servicer-register-process', [ServicerRegisterController::class, 'process'])->name('servicer.register.process');
 
 // Route::get('/servicer', [ClientHomeController::class, 'index'])->middleware('guest')->name('home');
 Route::get('/servicer/login', [ServicerLoginController::class, 'getLogin'])->middleware('guest')->name('servicer.login');

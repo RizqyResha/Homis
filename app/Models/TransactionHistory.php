@@ -12,7 +12,6 @@ class TransactionHistory extends Model
     protected $table = 'tbl_transaction_history';
     protected $primarykey = 'id_transaction_history';
     protected $fillable = [
-        'id_transaction_history',
         'id_transaction',
         'transaction_amount',
         'transaction_date',

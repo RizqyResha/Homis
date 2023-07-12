@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Chatify\Facades\ChatifyMessenger as Chatify;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Image;
 
 class ClientAccountController extends Controller
@@ -245,7 +248,32 @@ class ClientAccountController extends Controller
             $resize_foto_client = Image::make($img_file->getRealPath());
             $resize_foto_client->resize(320, 220)->save($file_loc . '/' . $img_client_name);
 
+            if ($request->hasFile('file_upload')) {
+                // allowed extensions
+                $allowed_images = Chatify::getAllowedImages();
 
+                $file = $request->file('file_upload');
+                // check file size
+                if ($file->getSize() < Chatify::getMaxUploadSize()) {
+                    if (in_array(strtolower($file->extension()), $allowed_images)) {
+                        // delete the older one
+                        if (Auth::user()->avatar != config('chatify.user_avatar.default')) {
+                            $avatar = Auth::user()->avatar;
+                        }
+                        // upload
+                        $avatar = Str::uuid() . "." . $file->extension();
+                        $update = User::where('id', Auth::user()->id)->update(['avatar' => $avatar]);
+                        $file->storeAs(config('chatify.user_avatar.folder'), $avatar, config('chatify.storage_disk_name'));
+                        $success = $update ? 1 : 0;
+                    } else {
+                        $msg = "File extension not allowed!";
+                        $error = 1;
+                    }
+                } else {
+                    $msg = "File size you are trying to upload is too large!";
+                    $error = 1;
+                }
+            }
 
             if ($request->password != "") {
                 Client::where('id_client', Auth::guard('client')->user()->id_client)
@@ -260,6 +288,17 @@ class ClientAccountController extends Controller
                         'updated_at' => now(),
                         'email' => $request->email
                     ]);
+
+                User::where('user_id', Auth::guard('client')->user()->id_client)->where('user_type', 'client')
+                    ->update([
+                        'email' => $request->email,
+                        'name' => $request->username,
+                        'password' => bcrypt($request->password),
+                        'updated_at' => now(),
+                        'avatar' => $avatar,
+                        'messenger_color' => '#4CAF50'
+                    ]);
+
             } else {
                 Client::where('id_client', Auth::guard('client')->user()->id_client)
                     ->update([
@@ -271,6 +310,14 @@ class ClientAccountController extends Controller
                         'profile_image' => $img_client_name,
                         'updated_at' => now(),
                         'email' => $request->email
+                    ]);
+                User::where('user_id', Auth::guard('client')->user()->id_client)->where('user_type', 'client')
+                    ->update([
+                        'email' => $request->email,
+                        'name' => $request->username,
+                        'updated_at' => now(),
+                        'avatar' => $avatar,
+                        'messenger_color' => '#4CAF50'
                     ]);
             }
 
@@ -287,6 +334,14 @@ class ClientAccountController extends Controller
                         'updated_at' => now(),
                         'email' => $request->email
                     ]);
+                User::where('user_id', Auth::guard('client')->user()->id_client)->where('user_type', 'client')
+                    ->update([
+                        'email' => $request->email,
+                        'name' => $request->username,
+                        'password' => bcrypt($request->password),
+                        'updated_at' => now(),
+                        'messenger_color' => '#4CAF50'
+                    ]);
             } else {
                 Client::where('id_client', Auth::guard('client')->user()->id_client)
                     ->update([
@@ -297,6 +352,14 @@ class ClientAccountController extends Controller
                         'address' => $request->address,
                         'updated_at' => now(),
                         'email' => $request->email
+                    ]);
+
+                User::where('user_id', Auth::guard('client')->user()->id_client)->where('user_type', 'client')
+                    ->update([
+                        'email' => $request->email,
+                        'name' => $request->username,
+                        'updated_at' => now(),
+                        'messenger_color' => '#4CAF50'
                     ]);
             }
         }

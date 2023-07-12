@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('tbl_transaction_history', function (Blueprint $table) {
-            $table->foreign(['id_transaction'], 'tbl_transaction_history_ibfk_1')->references(['id_transaction_history'])->on('tbl_transaction_history');
+            $table->foreign(['id_transaction'], 'tbl_transaction_history_ibfk_1')->references(['id_transaction'])->on('tbl_transaction');
         });
     }
 

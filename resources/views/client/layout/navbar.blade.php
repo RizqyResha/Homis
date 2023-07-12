@@ -48,13 +48,24 @@
                                         <a href="{{ route('client.accountcenter') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Account Settings</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Contracts</a>
+                                        <a href="{{ route('client.transaction') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Contracts</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('client.logout') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
                                     </li>
                                 </ul>
                             </div>
+                        </a>
+                        <a target="_blank" href="/chat">
+                            <button class="p-2 w-full rounded bg-white border border-green-400 text-green-400">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-medium text-green-500 truncate dark:text-white font-semibold">
+                                            <i class="fas fa-comments"></i> &nbsp; Messangger
+                                        </p>
+                                    </div>
+                                </div>
+                            </button>
                         </a>
                     @else
                         <a href="{{ route('client.login') }}"><button class="px-4 py-2 w-full rounded bg-white border border-green-400 text-green-400">Log in / Sign Up</button></a>
