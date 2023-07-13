@@ -11,7 +11,6 @@
 
                 <div class="flex-auto px-0 pt-0 pb-2">
                     <div class="p-0 overflow-x-auto">
-
                         <div class="">
                             <div class="border-b border-gray-200 dark:border-gray-700">
                                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
@@ -142,7 +141,7 @@
                                                             <Button onclick="Finishfirmation('{{ route('client.transaction.update.finished', $row->id_transaction) }}')" class="mt-2 background bg-green-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-clipboard-check"></i></Button>
                                                             <Button disabled class="background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
                                                         @elseif($row->status == 'Finished')
-                                                            <Button data-modal-target="feebackModal-{{ $row->id_transaction }}" data-modal-toggle="feebackModal-{{ $row->id_transaction }}" type="button" class="mt-2 background bg-yellow-300 rounded text-white font-semibold p-2 w-full"><i class="fas fa-star"></i></Button>
+                                                            <Button data-modal-target="feedbackModal-{{ $row->id_transaction }}" data-modal-toggle="feedbackModal-{{ $row->id_transaction }}" type="button" class="mt-2 background bg-yellow-300 rounded text-white font-semibold p-2 w-full"><i class="fas fa-star"></i></Button>
                                                             <Button disabled class="background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-times-circle"></i></Button>
                                                         @else
                                                             <Button disabled class="mt-2 background bg-gray-500 rounded text-white font-semibold p-2 w-full"><i class="fas fa-check-square"></i></Button>
@@ -208,7 +207,7 @@
                                                     </div>
 
                                                     {{-- Feedback Modal --}}
-                                                    <div id="feebackModal-{{ $row->id_transaction }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                    <div id="feedbackModal-{{ $row->id_transaction }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                         <div class="relative w-full max-w-2xl max-h-full">
                                                             <!-- Modal content -->
                                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -229,24 +228,23 @@
                                                                     <form action="{{ route('client.transaction.pay') }}" method="POST">
                                                                         @csrf
                                                                         <div class="grid xl:grid-rows-3 xl:col-span-2 mt-2">
-
-                                                                            <div class="relative z-0 w-full mb-6 group p-2">
-                                                                                <div class="rating rating-lg">
-                                                                                    <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
-                                                                                    <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" checked />
-                                                                                    <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
-                                                                                    <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
-                                                                                    <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
-                                                                                </div>
+                                                                            <div class="rating rating-lg">
+                                                                                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                                                                                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" checked />
+                                                                                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                                                                                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                                                                                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                                                                            </div>
+                                                                            <div class="relative z-0 w-full group p-2">
                                                                                 <input type="email" value="{{ $row->email }} " name="email" id="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                                                                                <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Rate Us</label>
+                                                                                <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Comments</label>
                                                                             </div>
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                                 <!-- Modal footer -->
                                                                 <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                                    <button data-modal-hide="feedbackModal-{{ $row->id_transaction }}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Close</button>
+                                                                    <button data-modal-hide="feedbackModal-{{ $row->id_transaction }}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                                                                     <button data-modal-hide="feedbackModal-{{ $row->id_transaction }}" type="button" class="text-white bg-gray-400 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</button>
                                                                 </div>
                                                             </div>
