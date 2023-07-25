@@ -14,19 +14,19 @@ class DetailTransactionSeeder extends Seeder
      */
     public function run(): void
     {
-        // $datas = Transaction::all();
+        $datas = Transaction::all();
 
-        // foreach ($datas as $row) {
-        //     DetailTransaction::create([
-        //         'id_transaction' => $row->id_transaction,
-        //         'work_time' => fake()->dateTime(),
-        //         'first_name' => fake()->firstName(),
-        //         'period_qty' => rand(1, 5),
-        //         'last_name' => fake()->lastName(),
-        //         'phone_number' => fake()->phoneNumber(),
-        //         'email' => fake()->email(),
-        //         'address' => fake()->address()
-        //     ]);
-        // }
+        foreach ($datas as $row) {
+            DetailTransaction::create([
+                'id_transaction' => $row->id_transaction,
+                'work_time' => fake()->dateTime(),
+                'first_name' => fake()->firstName(),
+                'period_qty' => rand(1, 5),
+                'last_name' => fake()->lastName(),
+                'phone_number' => fake()->phoneNumber(),
+                'email' => fake()->email(),
+                'address' => fake()->address()
+            ]);
+        }
     }
 }

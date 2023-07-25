@@ -24,7 +24,7 @@
             <div class=" container mx-auto xl:p-5 mt-5 background bg-white shadow-2xl rounded mb-5">
                 <div class="px-10">
                     <div class="grid xl:grid-cols-2 grid-cols-1">
-                        <div>
+                        <div class="mr-5"> 
                             <div class="flex justify-center">
                                 @if ($data->thumbnail_image == 'noimage')
                                     <img src="{{ asset('assets/img/services/noimage.png') }}" alt="">
@@ -186,9 +186,11 @@
                                 </script>
                                 <div class="grid grid-rows-1 mb-10">
                                     <div class="grid grid-cols-2">
-                                        <div class="flex xl:justify-start">
-                                            <a href="{{ '/chat/' . $id }}" target="_blank" class="mr-4 background item-end bg-white border-2 border-green-500 xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 text-green-400 font-bold rounded"><i class="fas fa-comments"></i> Chat</a>
-                                            <button type="submit" class="background item-end bg-green-500  text-white xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 font-bold rounded">Contract</button>
+                                        <div class="col-span-2">
+                                            <div class="flex xl:justify-start">
+                                                <a href="{{ '/chat/' . $id }}" target="_blank" class="mr-4 background item-end bg-white border-2 border-green-500 xl:px-4 xl:py-1 xl:text-2xl text-xl px-1 text-green-400 font-bold rounded"><i class="fas fa-comments"></i> Chat</a>
+                                                <button type="submit" class="background item-end bg-green-500  text-white xl:px-4 xl:py-2 xl:text-2xl text-xl px-2 font-bold rounded">Contract</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

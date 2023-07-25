@@ -119,7 +119,7 @@
                                             {{ $row->td }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $row->transaction_amount }}
+                                            {{ $row->transaction_amount/2 }}
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $row->transaction_type }}
@@ -200,7 +200,7 @@
             var parsedValue = parseFloat(amount);
             if (!isNaN(parsedValue) && parsedValue >= 0) {
                 var net = parseFloat(amount) - (parseFloat(amount) * 0.02);
-                var fee = (parseFloat(net) - parseFloat(amount) * -1);
+                var fee = (parseFloat(amount) - parseFloat(net));
                 if (net < 0 || NaN) {
                     net = 0;
                     fee = 0;

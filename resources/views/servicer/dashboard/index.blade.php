@@ -86,11 +86,11 @@
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
                                 <p class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">This Month Earnings</p>
-                                <h5 class="mb-2 font-bold dark:text-white">Rp. {{ number_format($this_month_earning) }}</h5>
-                                <p class="mb-0 dark:text-white dark:opacity-60">
+                                <h5 class="mb-3 font-bold dark:text-white">Rp. {{ number_format($this_month_earning) }}</h5>
+                                {{-- <p class="mb-0 dark:text-white dark:opacity-60">
                                     <span class="text-sm font-bold leading-normal {{ $month_earn_percentage >= 0 ? 'text-emerald-400' : 'text-red-600' }}">{{ number_format($month_earn_percentage, 1) }}%</span>
                                     <a class="text-sm">Since last Month</a>
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">

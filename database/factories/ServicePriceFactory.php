@@ -21,7 +21,7 @@ class ServicePriceFactory extends Factory
 
         return [
             'id_svc' => fake()->numberBetween(1, Service::count()),
-            'price_per_period' => rand(1000, 1000000),
+            'price_per_period' => rand(10000),
             'period_type' => fake()->randomElement(['Hourly', 'Daily', 'Weekly', 'Monthly']),
         ];
     }

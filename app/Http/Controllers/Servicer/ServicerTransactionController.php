@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DetailTransaction;
 use App\Models\Servicer;
 use App\Models\Transaction;
+use App\Models\TransactionHistory;
 use App\Models\User;
 use Auth;
 use DB;
@@ -24,6 +25,7 @@ class ServicerTransactionController extends Controller
                 ->join('tbl_svc_category', 'tbl_svc.id_svc_category', 'tbl_svc_category.id_svc_category')
                 ->where('users.user_type', 'client')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             // return dd($data);
         } elseif (Route::is('servicer.transaction.paid')) {
@@ -35,6 +37,7 @@ class ServicerTransactionController extends Controller
                 ->where('users.user_type', 'client')
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('tbl_transaction.status', 'Paid')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
         } elseif (Route::is('servicer.transaction.pending')) {
             $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
@@ -45,6 +48,7 @@ class ServicerTransactionController extends Controller
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('tbl_transaction.status', 'Pending')
                 ->where('users.user_type', 'client')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
         } elseif (Route::is('servicer.transaction.process')) {
             $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
@@ -55,6 +59,7 @@ class ServicerTransactionController extends Controller
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Process')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
         } elseif (Route::is('servicer.transaction.reject')) {
             $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
@@ -65,6 +70,7 @@ class ServicerTransactionController extends Controller
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Reject')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
         } elseif (Route::is('servicer.transaction.accepted')) {
             $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
@@ -75,6 +81,7 @@ class ServicerTransactionController extends Controller
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Accepted(Unpaid)')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
         } elseif (Route::is('servicer.transaction.finished')) {
             $data = DetailTransaction::select('users.id as userid', 'tbl_detail_transaction.*', 'tbl_transaction.transaction_date', 'tbl_transaction.period_type', 'tbl_transaction.status', 'tbl_transaction.id_transaction', 'tbl_svc_category.svc_category_name')
@@ -85,6 +92,7 @@ class ServicerTransactionController extends Controller
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Finished')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
 
         } elseif (Route::is('servicer.transaction.rejected')) {
@@ -96,6 +104,7 @@ class ServicerTransactionController extends Controller
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Rejected')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
 
         } elseif (Route::is('servicer.transaction.canceled')) {
@@ -107,6 +116,7 @@ class ServicerTransactionController extends Controller
                 ->where('tbl_svc.id_servicer', Auth::guard('servicer')->user()->id_servicer)
                 ->where('users.user_type', 'client')
                 ->where('tbl_transaction.status', 'Canceled')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
         }
 
@@ -128,6 +138,7 @@ class ServicerTransactionController extends Controller
 
     public function UpdateStatusToReject(Request $request, $id_transaction)
     {
+        //
         Transaction::where('id_transaction', $id_transaction)
             ->update(['status' => 'Rejected']);
         if ($request->ajax()) {
@@ -139,17 +150,24 @@ class ServicerTransactionController extends Controller
     {
         $transaction = Transaction::where('id_transaction', $id_transaction)->first();
         if ($transaction->confirm_client == 1) {
-            Transaction::where('id_transaction', $id_transaction)
-                ->update([
-                    'status' => 'Finished',
-                    'transaction_finish_date' => now()
-                ]);
+
             $balance = Transaction::select('price_total')->where('id_transaction', $id_transaction)->pluck('price_total')->first();
             $id_servicer = Servicer::select('tbl_servicer.id_servicer', 'tbl_servicer.balance')
                 ->join('tbl_svc', 'tbl_svc.id_servicer', 'tbl_servicer.id_servicer')
                 ->join('tbl_transaction', 'tbl_transaction.id_svc', 'tbl_svc.id_svc')
                 ->where('tbl_transaction.id_transaction', $id_transaction)->first();
             $half_balance = ($balance / 2) + $id_servicer->balance;
+            TransactionHistory::create([
+                'id_transaction' => $id_transaction,
+                'transaction_amount' => $half_balance,
+                'transaction_date' => now(),
+                'transaction_type' => 'Full'
+            ]);
+            Transaction::where('id_transaction', $id_transaction)
+            ->update([
+                'status' => 'Finished',
+                'transaction_finish_date' => now()
+            ]);
             Servicer::where('id_servicer', $id_servicer->id_servicer)->update(['tbl_servicer.balance' => $half_balance]);
             if ($request->ajax()) {
                 return response()->json(['success' => true, 'message' => 'Transaction already Finished!']);

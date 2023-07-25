@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Facade;
 
 
 return [
-    'merchant_id' => env('MIDTRANS_MERCHANT_ID'),
-    'client_key' => env('MIDTRANS_CLIENT_KEY'),
-    'server_key' => env('MIDTRANS_SERVER_KEY'),
+    'merchant_id' => "G927052382",
+    'client_key' => "SB-Mid-client-urr0JzDNpk_aPUrA",
+    'server_key' => "SB-Mid-server-K0Pody3dkqM9eYGzOHjw8KBj",
 ];

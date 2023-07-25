@@ -162,6 +162,7 @@ class ClientTransactionController extends Controller
                 ->join('users', 'users.user_id', 'tbl_servicer.id_servicer')
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
 
@@ -175,6 +176,7 @@ class ClientTransactionController extends Controller
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
                 ->where('tbl_transaction.status', 'Paid')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
 
@@ -188,6 +190,7 @@ class ClientTransactionController extends Controller
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
                 ->where('tbl_transaction.status', 'Pending')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
 
@@ -201,6 +204,7 @@ class ClientTransactionController extends Controller
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
                 ->where('tbl_transaction.status', 'Process')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
 
@@ -214,6 +218,7 @@ class ClientTransactionController extends Controller
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
                 ->where('tbl_transaction.status', 'Reject')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
 
@@ -227,6 +232,7 @@ class ClientTransactionController extends Controller
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
                 ->where('tbl_transaction.status', 'Accepted(Unpaid)')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
 
@@ -240,6 +246,7 @@ class ClientTransactionController extends Controller
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
                 ->where('tbl_transaction.status', 'Finished')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
 
@@ -253,6 +260,7 @@ class ClientTransactionController extends Controller
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
                 ->where('tbl_transaction.status', 'Rejected')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
         } elseif (Route::is('client.transaction.canceled')) {
@@ -265,6 +273,7 @@ class ClientTransactionController extends Controller
                 ->where('users.user_type', 'servicer')
                 ->where('tbl_transaction.id_client', Auth::guard('client')->user()->id_client)
                 ->where('tbl_transaction.status', 'Canceled')
+                ->orderBy('tbl_transaction.id_transaction','DESC')
                 ->paginate(5);
             return view('client.account.transaction.index', ['data' => $data]);
         }
@@ -283,13 +292,13 @@ class ClientTransactionController extends Controller
     public function UpdateStatusToProcess(Request $request, $id_transaction)
     {
 
-        $balance = \App\Models\Transaction::select('price_total')->where('id_transaction', $id_transaction)->pluck('price_total')->first();
+        $pricetotal = \App\Models\Transaction::select('price_total')->where('id_transaction', $id_transaction)->pluck('price_total')->first();
 
         $id_servicer = Servicer::select('tbl_servicer.id_servicer', 'tbl_servicer.balance')
             ->join('tbl_svc', 'tbl_svc.id_servicer', 'tbl_servicer.id_servicer')
             ->join('tbl_transaction', 'tbl_transaction.id_svc', 'tbl_svc.id_svc')
             ->where('tbl_transaction.id_transaction', $id_transaction)->first();
-        $half_balance = ($balance / 2) + $id_servicer->balance;
+        $half_balance = ($pricetotal / 2);
 
         TransactionHistory::create([
             'id_transaction' => $id_transaction,

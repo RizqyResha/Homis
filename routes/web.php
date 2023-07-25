@@ -57,7 +57,7 @@ Route::group(['prefix' => '/client', 'middleware' => ['auth:client']], function 
     Route::get('/transactionlist-rejected', [ClientTransactionController::class, 'transactionlist'])->name('client.transaction.rejected');
     Route::get('/transactionlist-accepted', [ClientTransactionController::class, 'transactionlist'])->name('client.transaction.accepted');
     Route::get('/transactionlist-canceled', [ClientTransactionController::class, 'transactionlist'])->name('client.transaction.canceled');
-    Route::get('/transaction-process-{id_transaction}', [ClientTransactionController::class, 'UpdateStatusToProcess'])->name('client.transaction.update.process');
+    Route::post('/transaction-process-{id_transaction}', [ClientTransactionController::class, 'UpdateStatusToProcess'])->name('client.transaction.update.process');
     Route::post('/transaction-cancel-{id_transaction}', [ClientTransactionController::class, 'UpdateStatusToCancel'])->name('client.transaction.update.cancel');
     Route::post('/transaction-finish-{id_transaction}', [ClientTransactionController::class, 'UpdateStatusToFinish'])->name('client.transaction.update.finished');
     Route::post('/transaction-pay', [ClientTransactionController::class, 'pay'])->name('client.transaction.pay');
